@@ -1,0 +1,62 @@
+
+  You can now view your Streamlit app in your browser.
+
+  URL: http://127.0.0.1:8501
+
++------------------------- Traceback (most recent call last) --------------------------+
+| C:\Users\hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\streamlit\runt |
+| ime\scriptrunner\exec_code.py:129 in exec_func_with_error_handling                   |
+|                                                                                      |
+| C:\Users\hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\streamlit\runt |
+| ime\scriptrunner\script_runner.py:689 in code_to_exec                                |
+|                                                                                      |
+| C:\Users\hp\Documents\opti\frontend\dashboard\app.py:1003 in <module>                |
+|                                                                                      |
+|   1000                                                                               |
+|   1001                                                                               |
+|   1002 if __name__ == "__main__":                                                    |
+| > 1003     main()                                                                    |
+|   1004                                                                               |
+|                                                                                      |
+| C:\Users\hp\Documents\opti\frontend\dashboard\app.py:995 in main                     |
+|                                                                                      |
+|    992     if selected_surface == "workflow":                                        |
+|    993         render_workflow_page()                                                |
+|    994     else:                                                                     |
+| >  995         render_output_page()                                                  |
+|    996                                                                               |
+|    997     if st.session_state.get("live_job_id"):                                   |
+|    998         time.sleep(1.0)                                                       |
+|                                                                                      |
+| C:\Users\hp\Documents\opti\frontend\dashboard\app.py:936 in render_output_page       |
+|                                                                                      |
+|    933         "Output Results",                                                     |
+|    934         "Inspect the final portfolio output, allocation charts, scenario view |
+|    935     )                                                                         |
+| >  936     render_output_results_page(st.session_state.get("live_snapshot"), st.sess |
+|    937                                                                               |
+|    938                                                                               |
+|    939 def render_workflow_results_section(snapshot: dict | None, dashboard: dict |  |
+|                                                                                      |
+| C:\Users\hp\Documents\opti\frontend\dashboard\app.py:755 in                          |
+| render_output_results_page                                                           |
+|                                                                                      |
+|    752             unsafe_allow_html=True,                                           |
+|    753         )                                                                     |
+|    754         st.markdown("</div>", unsafe_allow_html=True)                         |
+| >  755     render_final_optimizer(left_col, right_col, selected_dashboard, dataset,  |
+|    756     st.markdown("---")                                                        |
+|    757     st.markdown('<div class="dashboard-title">Output Analysis</div>', unsafe_ |
+|    758     render_final_intelligence(selected_dashboard)                             |
+|                                                                                      |
+| C:\Users\hp\Documents\opti\frontend\dashboard\app.py:388 in render_final_optimizer   |
+|                                                                                      |
+|    385     model_outputs = dashboard["model_outputs"]                                |
+|    386     selected_mc = dashboard["monte_carlo"][selected_model]                    |
+|    387     decision_analysis = dashboard["intelligence"]["decision_variable_analysis |
+| >  388     math_payload = dashboard["intelligence"]["mathematical_model"]            |
+|    389     acceptance_summary = build_rejection_summary(                             |
+|    390         accepted_count=int(decision_analysis.get("accepted_count") or 0),     |
+|    391         rejected_count=int(decision_analysis.get("rejected_count") or 0),     |
++--------------------------------------------------------------------------------------+
+KeyError: 'mathematical_model'

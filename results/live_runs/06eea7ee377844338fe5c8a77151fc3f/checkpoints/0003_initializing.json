@@ -1,0 +1,182 @@
+{
+  "event": {
+    "timestamp": "2026-03-30T11:02:02.097954+00:00",
+    "event": "update",
+    "message": "Asset universe and optimization problem prepared.",
+    "stage": "initializing",
+    "progress": 0.03
+  },
+  "status": "running",
+  "stage": "initializing",
+  "progress": 0.03,
+  "latest_payload": {
+    "selected_model": "HYBRID",
+    "current_model": "HYBRID",
+    "message": "Asset universe and optimization problem prepared.",
+    "assets": [
+      {
+        "name": "Asset 1",
+        "mu": 0.1121,
+        "sigma": 0.2282,
+        "liquidity": 0.6543,
+        "cost": 0.0109,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 2",
+        "mu": 0.141,
+        "sigma": 0.2167,
+        "liquidity": 0.463,
+        "cost": 0.018,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 3",
+        "mu": 0.1377,
+        "sigma": 0.1565,
+        "liquidity": 0.8954,
+        "cost": 0.0152,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 4",
+        "mu": 0.1083,
+        "sigma": 0.0818,
+        "liquidity": 0.8975,
+        "cost": 0.0184,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 5",
+        "mu": 0.098,
+        "sigma": 0.2159,
+        "liquidity": 0.8401,
+        "cost": 0.0225,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 6",
+        "mu": 0.1013,
+        "sigma": 0.0792,
+        "liquidity": 0.6067,
+        "cost": 0.0193,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 7",
+        "mu": 0.1495,
+        "sigma": 0.1256,
+        "liquidity": 0.6352,
+        "cost": 0.0168,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 8",
+        "mu": 0.0746,
+        "sigma": 0.1349,
+        "liquidity": 0.638,
+        "cost": 0.0191,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 9",
+        "mu": 0.1382,
+        "sigma": 0.178,
+        "liquidity": 0.6124,
+        "cost": 0.0234,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 10",
+        "mu": 0.1075,
+        "sigma": 0.1372,
+        "liquidity": 0.6493,
+        "cost": 0.0118,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 11",
+        "mu": 0.0649,
+        "sigma": 0.175,
+        "liquidity": 0.8272,
+        "cost": 0.0197,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 12",
+        "mu": 0.1139,
+        "sigma": 0.182,
+        "liquidity": 0.467,
+        "cost": 0.0113,
+        "sector": "Residential"
+      }
+    ],
+    "model_outputs": {},
+    "current_output": null,
+    "comparison_table": [],
+    "stage_rows": [
+      {
+        "name": "Universe",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.0,
+        "detail": "12 assets ready"
+      },
+      {
+        "name": "QP",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "PSO",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "GA",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "HYBRID",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "Packaging",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      }
+    ],
+    "current_trace": [],
+    "current_trace_payload": {
+      "plot_type": "scatter3d",
+      "model": "HYBRID",
+      "title": "HYBRID Live Trace",
+      "color_by": "expected_return",
+      "points": []
+    },
+    "current_surface": null,
+    "decision_analysis": null,
+    "candidate_summary": null,
+    "minimum_characteristics": null,
+    "decision_variable_ranges": null,
+    "rejection_reasons": null,
+    "latest_event": null,
+    "step_insights": [
+      "HYBRID is solving the constrained objective with return, covariance risk, transaction cost, and liquidity terms.",
+      "Current backend stage: initializing. The optimizer respects simplex feasibility and the active-asset target of 4.",
+      "Covariance is symmetrized and diagonally regularized before optimization to improve numerical stability and produce more reliable portfolio weights."
+    ]
+  }
+}

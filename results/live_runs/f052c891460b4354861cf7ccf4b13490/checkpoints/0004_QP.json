@@ -1,0 +1,192 @@
+{
+  "event": {
+    "timestamp": "2026-03-30T10:53:01.255883+00:00",
+    "event": "update",
+    "message": "QP backend stage: QP",
+    "stage": "QP",
+    "progress": 0.08
+  },
+  "status": "running",
+  "stage": "QP",
+  "progress": 0.08,
+  "latest_payload": {
+    "selected_model": "HYBRID",
+    "current_model": "QP",
+    "message": "QP backend stage: QP",
+    "assets": [
+      {
+        "name": "Asset 1",
+        "mu": 0.14361595928144436,
+        "sigma": 0.1885959966343271,
+        "liquidity": 0.578281218476312,
+        "cost": 0.013671052990970099,
+        "sector": "Commercial"
+      },
+      {
+        "name": "Asset 2",
+        "mu": 0.07327177128907551,
+        "sigma": 0.22226805557388948,
+        "liquidity": 0.6878153280606876,
+        "cost": 0.018393568649329412,
+        "sector": "Land"
+      },
+      {
+        "name": "Asset 3",
+        "mu": 0.08640130847838123,
+        "sigma": 0.10642720288985126,
+        "liquidity": 0.7322729641413034,
+        "cost": 0.016227775228180998,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 4",
+        "mu": 0.15187202380848897,
+        "sigma": 0.19097266868992543,
+        "liquidity": 0.7338942579409358,
+        "cost": 0.026317308311439407,
+        "sector": "Commercial"
+      },
+      {
+        "name": "Asset 5",
+        "mu": 0.07703879308154128,
+        "sigma": 0.1524951010303664,
+        "liquidity": 0.5589829474393176,
+        "cost": 0.008210132767028495,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 6",
+        "mu": 0.10741130612732429,
+        "sigma": 0.20840348824699934,
+        "liquidity": 0.7366566917604761,
+        "cost": 0.017599199991567074,
+        "sector": "Commercial"
+      },
+      {
+        "name": "Asset 7",
+        "mu": 0.08904125345029579,
+        "sigma": 0.08165116357595083,
+        "liquidity": 0.5654216404422419,
+        "cost": 0.020865709739390566,
+        "sector": "Commercial"
+      },
+      {
+        "name": "Asset 8",
+        "mu": 0.09361727579969477,
+        "sigma": 0.0740809703763074,
+        "liquidity": 0.8985806192743542,
+        "cost": 0.01024128448615062,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 9",
+        "mu": 0.1340723065952816,
+        "sigma": 0.13926105631105293,
+        "liquidity": 0.9059689064300556,
+        "cost": 0.018539163554717197,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 10",
+        "mu": 0.07593563082529584,
+        "sigma": 0.15576013499270844,
+        "liquidity": 0.6890467166297373,
+        "cost": 0.024157790956081285,
+        "sector": "Commercial"
+      },
+      {
+        "name": "Asset 11",
+        "mu": 0.11172617812281127,
+        "sigma": 0.08123161153410087,
+        "liquidity": 0.7074569380798349,
+        "cost": 0.013123921521015334,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 12",
+        "mu": 0.12900397782247078,
+        "sigma": 0.12247266689568026,
+        "liquidity": 0.9628190860656479,
+        "cost": 0.017688857950481435,
+        "sector": "Residential"
+      }
+    ],
+    "model_outputs": {},
+    "current_output": null,
+    "comparison_table": [],
+    "stage_rows": [
+      {
+        "name": "Universe",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.0,
+        "detail": "12 assets ready"
+      },
+      {
+        "name": "QP",
+        "status": "running",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "QP"
+      },
+      {
+        "name": "PSO",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "GA",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "HYBRID",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "Packaging",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      }
+    ],
+    "current_trace": [],
+    "current_trace_payload": {
+      "plot_type": "scatter3d",
+      "model": "QP",
+      "title": "QP Live Trace",
+      "color_by": "expected_return",
+      "points": []
+    },
+    "current_surface": null,
+    "decision_analysis": null,
+    "candidate_summary": null,
+    "minimum_characteristics": null,
+    "decision_variable_ranges": null,
+    "rejection_reasons": null,
+    "latest_event": {
+      "event_type": "stage_started",
+      "stage": "QP",
+      "model": "QP",
+      "timestamp": "2026-03-30T10:53:01.255883Z",
+      "status": "started",
+      "details": {
+        "asset_count": 12,
+        "active_assets_target": 4
+      }
+    },
+    "step_insights": [
+      "QP is solving the constrained objective with return, covariance risk, transaction cost, and liquidity terms.",
+      "Current backend stage: QP. The optimizer respects simplex feasibility and the active-asset target of 4.",
+      "Covariance is symmetrized and diagonally regularized before optimization to improve numerical stability and produce more reliable portfolio weights."
+    ]
+  }
+}

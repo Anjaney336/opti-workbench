@@ -1,0 +1,24 @@
+{
+  "event": {
+    "timestamp": "2026-03-30T10:53:01.122878+00:00",
+    "event": "created",
+    "message": "Job created",
+    "stage": "queued"
+  },
+  "status": "pending",
+  "stage": "queued",
+  "progress": 0.0,
+  "latest_payload": {
+    "asset_count": 12,
+    "active_assets_target": 4,
+    "budget": 5.0,
+    "lambda_value": 1.0,
+    "liquidity_weight": 0.35,
+    "cost_sensitivity": 0.15,
+    "method": "AUTO",
+    "dataset": "balanced",
+    "seed": 7,
+    "monte_carlo_paths": 300,
+    "assets": null
+  }
+}

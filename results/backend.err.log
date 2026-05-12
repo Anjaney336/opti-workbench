@@ -1,0 +1,6 @@
+INFO:     Started server process [16108]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+C:\Users\hp\Documents\opti\optimizer\advanced.py:194: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  cp_problem.solve(solver=solver_name, warm_start=True, verbose=False)

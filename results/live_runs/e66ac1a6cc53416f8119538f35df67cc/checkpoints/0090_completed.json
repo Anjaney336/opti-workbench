@@ -1,0 +1,1805 @@
+{
+  "event": {
+    "timestamp": "2026-03-30T10:57:21.577895+00:00",
+    "event": "update",
+    "message": "Optimization workflow completed.",
+    "stage": "completed",
+    "progress": 1.0
+  },
+  "status": "running",
+  "stage": "completed",
+  "progress": 1.0,
+  "latest_payload": {
+    "selected_model": "HYBRID",
+    "current_model": "HYBRID",
+    "message": "Optimization workflow completed.",
+    "assets": [
+      {
+        "name": "Asset 1",
+        "mu": 0.1121,
+        "sigma": 0.2282,
+        "liquidity": 0.6543,
+        "cost": 0.0109,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 2",
+        "mu": 0.141,
+        "sigma": 0.2167,
+        "liquidity": 0.463,
+        "cost": 0.018,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 3",
+        "mu": 0.1377,
+        "sigma": 0.1565,
+        "liquidity": 0.8954,
+        "cost": 0.0152,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 4",
+        "mu": 0.1083,
+        "sigma": 0.0818,
+        "liquidity": 0.8975,
+        "cost": 0.0184,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 5",
+        "mu": 0.098,
+        "sigma": 0.2159,
+        "liquidity": 0.8401,
+        "cost": 0.0225,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 6",
+        "mu": 0.1013,
+        "sigma": 0.0792,
+        "liquidity": 0.6067,
+        "cost": 0.0193,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 7",
+        "mu": 0.1495,
+        "sigma": 0.1256,
+        "liquidity": 0.6352,
+        "cost": 0.0168,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 8",
+        "mu": 0.0746,
+        "sigma": 0.1349,
+        "liquidity": 0.638,
+        "cost": 0.0191,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 9",
+        "mu": 0.1382,
+        "sigma": 0.178,
+        "liquidity": 0.6124,
+        "cost": 0.0234,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 10",
+        "mu": 0.1075,
+        "sigma": 0.1372,
+        "liquidity": 0.6493,
+        "cost": 0.0118,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 11",
+        "mu": 0.0649,
+        "sigma": 0.175,
+        "liquidity": 0.8272,
+        "cost": 0.0197,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 12",
+        "mu": 0.1139,
+        "sigma": 0.182,
+        "liquidity": 0.467,
+        "cost": 0.0113,
+        "sector": "Residential"
+      }
+    ],
+    "model_outputs": {
+      "QP": {
+        "weights": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2902436355407119,
+          0.2864692806408735,
+          0.29662974953922117,
+          0.12665733427919348
+        ],
+        "expected_return": 0.10458465922011588,
+        "risk": 0.016275885218637733,
+        "sharpe": 6.425743227800267,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.30624547405763497,
+        "budget_used": 5.0,
+        "average_liquidity": 0.6682708102524783,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). QP behaves as smooth and deterministic search.",
+          "solver_steps": [
+            "Compute a convex quadratic objective.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "QP assigns the largest weight to Asset 11 because it offers an attractive return-to-risk profile. Its expected return is 0.0649 and its standalone variance contribution is 0.0306. The asset also has liquidity 0.8272, which supports implementability. Its transaction cost is 0.0197, which affects how aggressively the optimizer can size it. QP concentrates mass where the convex trade-off is most efficient.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 4: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 5: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight 29.02%; mu=0.1382; covariance exposure=0.0184; liquidity=0.6124; cost=0.0234; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 10: weight 28.65%; mu=0.1075; covariance exposure=0.0117; liquidity=0.6493; cost=0.0118; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 11: weight 29.66%; mu=0.0649; covariance exposure=0.0185; liquidity=0.8272; cost=0.0197; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 12: weight 12.67%; mu=0.1139; covariance exposure=0.0166; liquidity=0.4670; cost=0.0113; chosen because it materially contributes to portfolio return and/or diversification."
+          ]
+        }
+      },
+      "PSO": {
+        "weights": [
+          0.0,
+          0.0,
+          0.362546395956759,
+          0.34072802873261604,
+          0.14075094259107418,
+          0.0,
+          0.15597463271955075,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "expected_return": 0.12393528420048615,
+        "risk": 0.010905032385703494,
+        "sharpe": 11.364962506939952,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.40477785452825915,
+        "budget_used": 5.0,
+        "average_liquidity": 0.847747402301425,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). PSO behaves as stochastic and exploratory search.",
+          "solver_steps": [
+            "Initialize a swarm of candidate portfolios.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "PSO assigns the largest weight to Asset 3 because it offers an attractive return-to-risk profile. Its expected return is 0.1377 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. PSO allows exploratory sampling, so nearby alternatives can retain weight if they improve the swarm objective.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight 36.25%; mu=0.1377; covariance exposure=0.0144; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 4: weight 34.07%; mu=0.1083; covariance exposure=0.0052; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 5: weight 14.08%; mu=0.0980; covariance exposure=0.0188; liquidity=0.8401; cost=0.0225; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight 15.60%; mu=0.1495; covariance exposure=0.0080; liquidity=0.6352; cost=0.0168; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 10: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 11: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 12: weight is near zero because it is less competitive on return, risk, liquidity, or cost."
+          ]
+        }
+      },
+      "GA": {
+        "weights": [
+          0.0,
+          0.0,
+          0.4002976699419585,
+          0.35603681674937987,
+          0.1158935695022888,
+          0.0,
+          0.12777194380637277,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "expected_return": 0.12413925181524256,
+        "risk": 0.010795832129635969,
+        "sharpe": 11.49881271999998,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.4177745541461806,
+        "budget_used": 5.0,
+        "average_liquidity": 0.8564925031432788,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). GA behaves as mutation-driven and irregular search.",
+          "solver_steps": [
+            "Initialize a population of portfolios and evolve it.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "GA assigns the largest weight to Asset 3 because it offers an attractive return-to-risk profile. Its expected return is 0.1377 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. GA is mutation-driven, so sparse and irregular allocations can persist if they survive selection pressure.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight 40.03%; mu=0.1377; covariance exposure=0.0146; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 4: weight 35.60%; mu=0.1083; covariance exposure=0.0051; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 5: weight 11.59%; mu=0.0980; covariance exposure=0.0183; liquidity=0.8401; cost=0.0225; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight 12.78%; mu=0.1495; covariance exposure=0.0077; liquidity=0.6352; cost=0.0168; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 10: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 11: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 12: weight is near zero because it is less competitive on return, risk, liquidity, or cost."
+          ]
+        }
+      },
+      "HYBRID": {
+        "weights": [
+          0.0,
+          0.0,
+          0.3146489397968053,
+          0.2877832926464892,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.19662079958481396,
+          0.0,
+          0.2009469679718914,
+          0.0
+        ],
+        "expected_return": 0.1147085423276319,
+        "risk": 0.01277891064303416,
+        "sharpe": 8.97639443078507,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.38349975172395184,
+        "budget_used": 5.0,
+        "average_liquidity": 0.8266560754163721,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). HYBRID behaves as progressive and balanced search.",
+          "solver_steps": [
+            "Solve a QP baseline, then refine with PSO, then mutate with GA.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "HYBRID assigns the largest weight to Asset 3 because it offers an attractive return-to-risk profile. Its expected return is 0.1377 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. HYBRID uses a refined baseline and then preserves only the strongest candidates across methods.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight 31.46%; mu=0.1377; covariance exposure=0.0161; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 4: weight 28.78%; mu=0.1083; covariance exposure=0.0040; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 5: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight 19.66%; mu=0.1382; covariance exposure=0.0178; liquidity=0.6124; cost=0.0234; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 10: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 11: weight 20.09%; mu=0.0649; covariance exposure=0.0152; liquidity=0.8272; cost=0.0197; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 12: weight is near zero because it is less competitive on return, risk, liquidity, or cost."
+          ]
+        }
+      }
+    },
+    "current_output": {
+      "weights": [
+        0.0,
+        0.0,
+        0.3146489397968053,
+        0.2877832926464892,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.19662079958481396,
+        0.0,
+        0.2009469679718914,
+        0.0
+      ],
+      "expected_return": 0.1147085423276319,
+      "risk": 0.01277891064303416,
+      "sharpe": 8.97639443078507,
+      "diversification": 4,
+      "active_assets_target": 4,
+      "objective_value": -0.38349975172395184,
+      "budget_used": 5.0,
+      "average_liquidity": 0.8266560754163721,
+      "valid": true,
+      "explanation": {
+        "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). HYBRID behaves as progressive and balanced search.",
+        "solver_steps": [
+          "Solve a QP baseline, then refine with PSO, then mutate with GA.",
+          "Form the covariance matrix Sigma and return vector mu.",
+          "Set the objective and enforce nonnegative weights that sum to 1.",
+          "Solve the model-specific optimization problem.",
+          "Project the solution back to the feasible simplex if needed.",
+          "Validate the allocation and compute summary metrics."
+        ],
+        "why_this_allocation": "HYBRID assigns the largest weight to Asset 3 because it offers an attractive return-to-risk profile. Its expected return is 0.1377 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. HYBRID uses a refined baseline and then preserves only the strongest candidates across methods.",
+        "asset_justifications": [
+          "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 3: weight 31.46%; mu=0.1377; covariance exposure=0.0161; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to portfolio return and/or diversification.",
+          "Asset 4: weight 28.78%; mu=0.1083; covariance exposure=0.0040; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to portfolio return and/or diversification.",
+          "Asset 5: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 7: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 9: weight 19.66%; mu=0.1382; covariance exposure=0.0178; liquidity=0.6124; cost=0.0234; chosen because it materially contributes to portfolio return and/or diversification.",
+          "Asset 10: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+          "Asset 11: weight 20.09%; mu=0.0649; covariance exposure=0.0152; liquidity=0.8272; cost=0.0197; chosen because it materially contributes to portfolio return and/or diversification.",
+          "Asset 12: weight is near zero because it is less competitive on return, risk, liquidity, or cost."
+        ]
+      }
+    },
+    "comparison_table": [
+      {
+        "model": "QP",
+        "expected_return": 0.10458465922011588,
+        "risk": 0.016275885218637733,
+        "sharpe": 6.425743227800267,
+        "diversification": 4
+      },
+      {
+        "model": "PSO",
+        "expected_return": 0.12393528420048615,
+        "risk": 0.010905032385703494,
+        "sharpe": 11.364962506939952,
+        "diversification": 4
+      },
+      {
+        "model": "GA",
+        "expected_return": 0.12413925181524256,
+        "risk": 0.010795832129635969,
+        "sharpe": 11.49881271999998,
+        "diversification": 4
+      },
+      {
+        "model": "HYBRID",
+        "expected_return": 0.1147085423276319,
+        "risk": 0.01277891064303416,
+        "sharpe": 8.97639443078507,
+        "diversification": 4
+      }
+    ],
+    "stage_rows": [
+      {
+        "name": "Universe",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.0,
+        "detail": "12 assets ready"
+      },
+      {
+        "name": "QP",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.11256950000097277,
+        "detail": "QP completed"
+      },
+      {
+        "name": "PSO",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.9754568999996991,
+        "detail": "PSO completed"
+      },
+      {
+        "name": "GA",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 3.1328942000000097,
+        "detail": "GA completed"
+      },
+      {
+        "name": "HYBRID",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 7.619635500002914,
+        "detail": "HYBRID completed"
+      },
+      {
+        "name": "Packaging",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.0,
+        "detail": "Dashboard bundle complete"
+      }
+    ],
+    "current_trace": [
+      {
+        "iteration": 0.0,
+        "risk": 0.016422342365427126,
+        "objective_value": -0.3048684533498255,
+        "expected_return": 0.10546546541244253,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 1.0,
+        "risk": 0.01630839622237528,
+        "objective_value": -0.30624126401356344,
+        "expected_return": 0.10460286102782063,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 2.0,
+        "risk": 0.01629336684188433,
+        "objective_value": -0.30624480730490933,
+        "expected_return": 0.10461286745729444,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 3.0,
+        "risk": 0.016282025671835704,
+        "objective_value": -0.3062453730078277,
+        "expected_return": 0.10459764881061039,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 4.0,
+        "risk": 0.016275966705491293,
+        "objective_value": -0.30624547343714364,
+        "expected_return": 0.1045855796422049,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 5.0,
+        "risk": 0.016275885218637733,
+        "objective_value": -0.30624547405763497,
+        "expected_return": 0.10458465922011588,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 0.0,
+        "risk": 0.013343767782756507,
+        "objective_value": -0.4014885052396368,
+        "expected_return": 0.12248058613048117,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 4.0,
+        "risk": 0.01033672240794787,
+        "objective_value": -0.40452627688135634,
+        "expected_return": 0.12425420038943014,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 9.0,
+        "risk": 0.011480124515822173,
+        "objective_value": -0.4046849321213811,
+        "expected_return": 0.12313501956322842,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 14.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 19.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 24.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 29.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 34.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 39.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 44.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 49.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.40477785452825915,
+        "expected_return": 0.12393528420048615,
+        "stage": "HYBRID:PSO Refinement"
+      },
+      {
+        "iteration": 0.0,
+        "risk": 0.010557469542431206,
+        "objective_value": -0.4175488728423356,
+        "expected_return": 0.12284959088925465,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 4.0,
+        "risk": 0.01059709171253179,
+        "objective_value": -0.4177580101396254,
+        "expected_return": 0.12409578115203579,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 9.0,
+        "risk": 0.010794505396485075,
+        "objective_value": -0.4177744123905618,
+        "expected_return": 0.12415244230969108,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 14.0,
+        "risk": 0.010794149734207725,
+        "objective_value": -0.4177746888386442,
+        "expected_return": 0.12416248769135126,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 19.0,
+        "risk": 0.010797449686524567,
+        "objective_value": -0.4177746948332062,
+        "expected_return": 0.12416493008205919,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 24.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.4177746949342883,
+        "expected_return": 0.12416382803777226,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 29.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.4177746949342883,
+        "expected_return": 0.12416382803777226,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 34.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.4177746949342883,
+        "expected_return": 0.12416382803777226,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 39.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.4177746949342883,
+        "expected_return": 0.12416382803777226,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 44.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.4177746949342883,
+        "expected_return": 0.12416382803777226,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 49.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.4177746949342883,
+        "expected_return": 0.12416382803777226,
+        "stage": "HYBRID:GA Mutation"
+      },
+      {
+        "iteration": 0.0,
+        "risk": 0.016275885218637733,
+        "objective_value": -0.31281686002254405,
+        "expected_return": 0.10458465922011588,
+        "stage": "QP"
+      },
+      {
+        "iteration": 1.0,
+        "risk": 0.010905032385703494,
+        "objective_value": -0.3964876646343495,
+        "expected_return": 0.12393528420048615,
+        "stage": "PSO"
+      },
+      {
+        "iteration": 2.0,
+        "risk": 0.010797447480059874,
+        "objective_value": -0.3951212743724623,
+        "expected_return": 0.12416382803777226,
+        "stage": "GA"
+      },
+      {
+        "iteration": 3.0,
+        "risk": 0.01277891064303416,
+        "objective_value": -0.3834997517239519,
+        "expected_return": 0.1147085423276319,
+        "stage": "BLEND"
+      }
+    ],
+    "current_trace_payload": {
+      "plot_type": "scatter3d",
+      "model": "HYBRID",
+      "title": "HYBRID Live Trace",
+      "color_by": "expected_return",
+      "points": [
+        {
+          "iteration": 0.0,
+          "risk": 0.016422342365427126,
+          "objective_value": -0.3048684533498255,
+          "expected_return": 0.10546546541244253,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 1.0,
+          "risk": 0.01630839622237528,
+          "objective_value": -0.30624126401356344,
+          "expected_return": 0.10460286102782063,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 2.0,
+          "risk": 0.01629336684188433,
+          "objective_value": -0.30624480730490933,
+          "expected_return": 0.10461286745729444,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 3.0,
+          "risk": 0.016282025671835704,
+          "objective_value": -0.3062453730078277,
+          "expected_return": 0.10459764881061039,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 4.0,
+          "risk": 0.016275966705491293,
+          "objective_value": -0.30624547343714364,
+          "expected_return": 0.1045855796422049,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 5.0,
+          "risk": 0.016275885218637733,
+          "objective_value": -0.30624547405763497,
+          "expected_return": 0.10458465922011588,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 0.0,
+          "risk": 0.013343767782756507,
+          "objective_value": -0.4014885052396368,
+          "expected_return": 0.12248058613048117,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 4.0,
+          "risk": 0.01033672240794787,
+          "objective_value": -0.40452627688135634,
+          "expected_return": 0.12425420038943014,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 9.0,
+          "risk": 0.011480124515822173,
+          "objective_value": -0.4046849321213811,
+          "expected_return": 0.12313501956322842,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 14.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 19.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 24.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 29.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 34.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 39.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 44.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 49.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.40477785452825915,
+          "expected_return": 0.12393528420048615,
+          "stage": "HYBRID:PSO Refinement"
+        },
+        {
+          "iteration": 0.0,
+          "risk": 0.010557469542431206,
+          "objective_value": -0.4175488728423356,
+          "expected_return": 0.12284959088925465,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 4.0,
+          "risk": 0.01059709171253179,
+          "objective_value": -0.4177580101396254,
+          "expected_return": 0.12409578115203579,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 9.0,
+          "risk": 0.010794505396485075,
+          "objective_value": -0.4177744123905618,
+          "expected_return": 0.12415244230969108,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 14.0,
+          "risk": 0.010794149734207725,
+          "objective_value": -0.4177746888386442,
+          "expected_return": 0.12416248769135126,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 19.0,
+          "risk": 0.010797449686524567,
+          "objective_value": -0.4177746948332062,
+          "expected_return": 0.12416493008205919,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 24.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.4177746949342883,
+          "expected_return": 0.12416382803777226,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 29.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.4177746949342883,
+          "expected_return": 0.12416382803777226,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 34.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.4177746949342883,
+          "expected_return": 0.12416382803777226,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 39.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.4177746949342883,
+          "expected_return": 0.12416382803777226,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 44.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.4177746949342883,
+          "expected_return": 0.12416382803777226,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 49.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.4177746949342883,
+          "expected_return": 0.12416382803777226,
+          "stage": "HYBRID:GA Mutation"
+        },
+        {
+          "iteration": 0.0,
+          "risk": 0.016275885218637733,
+          "objective_value": -0.31281686002254405,
+          "expected_return": 0.10458465922011588,
+          "stage": "QP"
+        },
+        {
+          "iteration": 1.0,
+          "risk": 0.010905032385703494,
+          "objective_value": -0.3964876646343495,
+          "expected_return": 0.12393528420048615,
+          "stage": "PSO"
+        },
+        {
+          "iteration": 2.0,
+          "risk": 0.010797447480059874,
+          "objective_value": -0.3951212743724623,
+          "expected_return": 0.12416382803777226,
+          "stage": "GA"
+        },
+        {
+          "iteration": 3.0,
+          "risk": 0.01277891064303416,
+          "objective_value": -0.3834997517239519,
+          "expected_return": 0.1147085423276319,
+          "stage": "BLEND"
+        }
+      ]
+    },
+    "current_surface": {
+      "asset_x": "Asset 3",
+      "asset_y": "Asset 4",
+      "x": [
+        0.0,
+        0.058823529411764705,
+        0.11764705882352941,
+        0.1764705882352941,
+        0.23529411764705882,
+        0.29411764705882354,
+        0.3529411764705882,
+        0.4117647058823529,
+        0.47058823529411764,
+        0.5294117647058824,
+        0.5882352941176471,
+        0.6470588235294118,
+        0.7058823529411764,
+        0.7647058823529411,
+        0.8235294117647058,
+        0.8823529411764706,
+        0.9411764705882353,
+        1.0
+      ],
+      "y": [
+        0.0,
+        0.058823529411764705,
+        0.11764705882352941,
+        0.1764705882352941,
+        0.23529411764705882,
+        0.29411764705882354,
+        0.3529411764705882,
+        0.4117647058823529,
+        0.47058823529411764,
+        0.5294117647058824,
+        0.5882352941176471,
+        0.6470588235294118,
+        0.7058823529411764,
+        0.7647058823529411,
+        0.8235294117647058,
+        0.8823529411764706,
+        0.9411764705882353,
+        1.0
+      ],
+      "z": [
+        [
+          -0.27432239840953804,
+          -0.31004767469565286,
+          -0.3313280464499101,
+          -0.34298431367958415,
+          -0.34813481445840494,
+          -0.34884621508178193,
+          -0.34651619036881154,
+          -0.34210601764860743,
+          -0.3362860564341361,
+          -0.32952904549965556,
+          -0.32217126475474694,
+          -0.3144534171714612,
+          -0.30654843055627845,
+          -0.2985806568605852,
+          -0.2906393139230008,
+          -0.282788012338,
+          -0.27507158205504223,
+          -0.26752101215168284
+        ],
+        [
+          -0.30993404550307535,
+          -0.3378095964524988,
+          -0.35427208603333005,
+          -0.36295112157014137,
+          -0.3662618378193729,
+          -0.3658448914208727,
+          -0.36283436881444475,
+          -0.3580256716406424,
+          -0.35198340011862445,
+          -0.34511222931669283,
+          -0.3377043933138307,
+          -0.3299720563334607,
+          -0.3220697266567221,
+          -0.3141099936235239,
+          -0.30617471554979936,
+          -0.2983230632591095,
+          -0.2905973614939503,
+          NaN
+        ],
+        [
+          -0.33154674286717045,
+          -0.3545450145794714,
+          -0.368152546138541,
+          -0.3752116632865413,
+          -0.3776625541431882,
+          -0.37685358395702134,
+          -0.37373616653578734,
+          -0.36899026966482196,
+          -0.3631070647580064,
+          -0.3564444388131214,
+          -0.349264940340144,
+          -0.34176212895182034,
+          -0.3340791326710737,
+          -0.3263218845376507,
+          -0.3185686729177635,
+          -0.31087710381701955,
+          NaN,
+          NaN
+        ],
+        [
+          -0.34380309931800795,
+          -0.36373908816360373,
+          -0.3756956914832872,
+          -0.3819691785357584,
+          -0.38416366307633715,
+          -0.38341754111957094,
+          -0.38054965413824815,
+          -0.3761557710786879,
+          -0.3706735536693334,
+          -0.36442708257632817,
+          -0.3576578637458802,
+          -0.3505467310656503,
+          -0.3432295193015542,
+          -0.3358084110310043,
+          -0.3283602391208903,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.3497107476453296,
+          -0.3677139224096104,
+          -0.378764764598583,
+          -0.38476460617239233,
+          -0.38706979539199304,
+          -0.3866615535389031,
+          -0.3842583482787371,
+          -0.3803917378824668,
+          -0.37545848304201324,
+          -0.36975693103890156,
+          -0.36351278880725363,
+          -0.35689761984150964,
+          -0.3500422775988319,
+          -0.34304676740556284,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.35126635606551104,
+          -0.3680493123316622,
+          -0.37865641324518684,
+          -0.3846929293530538,
+          -0.38732596786678664,
+          -0.38741479635815423,
+          -0.38559899145252136,
+          -0.38235914173719926,
+          -0.37805933083088444,
+          -0.3729773058958837,
+          -0.36732618615751716,
+          -0.36127027262124634,
+          -0.35493668867103695,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.34982282173499585,
+          -0.36583908429472073,
+          -0.3762869430027531,
+          -0.382542897121899,
+          -0.385625115316939,
+          -0.38629531437949727,
+          -0.38512905866188635,
+          -0.3825650631218288,
+          -0.3789402823315405,
+          -0.3745152182495766,
+          -0.3694923960982476,
+          -0.36403000291731286,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.34631261932099366,
+          -0.3618518363410912,
+          -0.37231234130423996,
+          -0.37888930515509167,
+          -0.3824807066633946,
+          -0.3837682338160742,
+          -0.38327412791173465,
+          -0.38140171811422396,
+          -0.3784647161176882,
+          -0.37470864802983556,
+          -0.3703267101443903,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.3413876093680678,
+          -0.35663430041380956,
+          -0.3672073658726121,
+          -0.3741551683042132,
+          -0.378276667199763,
+          -0.3801865252006021,
+          -0.38036161324393425,
+          -0.37917467976185193,
+          -0.3769190284160103,
+          -0.37382681035226945,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.3355087744506079,
+          -0.3505792974695004,
+          -0.36131869930195304,
+          -0.3686543588129527,
+          -0.373302254988431,
+          -0.3758199677206713,
+          -0.3766451091820675,
+          -0.376123537256772,
+          -0.37453030354095024,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.32900509994575633,
+          -0.3439712996566141,
+          -0.35490130865564334,
+          -0.36262131727522146,
+          -0.3677767815444349,
+          -0.37087600437833523,
+          -0.37232217455212036,
+          -0.37243718971043277,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.32211296936819667,
+          -0.337017516727835,
+          -0.3481437120609734,
+          -0.3562320547152253,
+          -0.361867365350655,
+          -0.3655149403020556,
+          -0.367547468860717,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.3150029830295276,
+          -0.32986943934568685,
+          -0.3411857872330424,
+          -0.3496191920990268,
+          -0.3557018345065776,
+          -0.3598611409918028,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.30779849912936186,
+          -0.3226379790978864,
+          -0.33413148462345066,
+          -0.3428828571656864,
+          -0.34937820610369025,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.300588630309757,
+          -0.31540424292392655,
+          -0.32705800827938203,
+          -0.33609866419637935,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.2934374670004545,
+          -0.3082272878476644,
+          -0.32002251526987024,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.2863906958705336,
+          -0.3011497593241627,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ],
+        [
+          -0.2794803963592568,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN,
+          NaN
+        ]
+      ],
+      "selected_point": {
+        "x": 0.3146489397968053,
+        "y": 0.2877832926464892,
+        "z": -0.3834997517239519
+      }
+    },
+    "decision_analysis": {
+      "agent_name": "Decision Range Agent",
+      "methodology": [
+        "Use only the minimum dataset features: mu, sigma, liquidity, and cost.",
+        "Normalize those features and construct a transparent decision score.",
+        "Infer weight bands and compare them with the final optimized decision variables x.",
+        "Classify assets as accepted or rejected based on the final feasible solution."
+      ],
+      "summary": "The model first normalizes expected return, volatility, liquidity, and cost onto a common [0, 1] scale. It then computes a transparent score that rewards higher return and liquidity, rewards lower volatility, and penalizes higher cost. The top assets by that score are Asset 3, Asset 7, Asset 4. Those assets receive wider allocation bands, while lower-ranked assets are assigned tighter satellite bands or near-zero weight bands.",
+      "records": [
+        {
+          "name": "Asset 3",
+          "mu": 0.1377,
+          "sigma": 0.1565,
+          "liquidity": 0.8954,
+          "cost": 0.0152,
+          "mu_norm": 0.8605200945626477,
+          "risk_norm": 0.5187919463087249,
+          "liquidity_norm": 0.9951668584579977,
+          "cost_norm": 0.344,
+          "decision_score": 1.0,
+          "selected_weight": 0.3146489397968053,
+          "rank": 1,
+          "min_weight": 0.10416666666666669,
+          "max_weight": 0.1375,
+          "preferred_weight": 0.12083333333333335,
+          "materiality": "core",
+          "reason": "Asset 3 is accepted because mu=0.1377, sigma=0.1565, liquidity=0.8954, and cost=0.0152 combine into score=1.0000; it is a material allocation."
+        },
+        {
+          "name": "Asset 7",
+          "mu": 0.1495,
+          "sigma": 0.1256,
+          "liquidity": 0.6352,
+          "cost": 0.0168,
+          "mu_norm": 1.0,
+          "risk_norm": 0.3114093959731543,
+          "liquidity_norm": 0.3963176064441887,
+          "cost_norm": 0.4719999999999999,
+          "decision_score": 0.9230333153327533,
+          "selected_weight": 0.0,
+          "rank": 2,
+          "min_weight": 0.09679069271938885,
+          "max_weight": 0.1333309712471908,
+          "preferred_weight": 0.11506083198328983,
+          "materiality": "core",
+          "reason": "Asset 7 is accepted because mu=0.1495, sigma=0.1256, liquidity=0.6352, and cost=0.0168 combine into score=0.9230; its final weight is near zero."
+        },
+        {
+          "name": "Asset 4",
+          "mu": 0.1083,
+          "sigma": 0.0818,
+          "liquidity": 0.8975,
+          "cost": 0.0184,
+          "mu_norm": 0.5130023640661938,
+          "risk_norm": 0.017449664429530148,
+          "liquidity_norm": 1.0,
+          "cost_norm": 0.6,
+          "decision_score": 0.8978874549619172,
+          "selected_weight": 0.2877832926464892,
+          "rank": 3,
+          "min_weight": 0.09438088110051707,
+          "max_weight": 0.1319689038104372,
+          "preferred_weight": 0.11317489245547713,
+          "materiality": "core",
+          "reason": "Asset 4 is accepted because mu=0.1083, sigma=0.0818, liquidity=0.8975, and cost=0.0184 combine into score=0.8979; it is a material allocation."
+        },
+        {
+          "name": "Asset 10",
+          "mu": 0.1075,
+          "sigma": 0.1372,
+          "liquidity": 0.6493,
+          "cost": 0.0118,
+          "mu_norm": 0.5035460992907802,
+          "risk_norm": 0.38926174496644295,
+          "liquidity_norm": 0.4287686996547756,
+          "cost_norm": 0.07199999999999998,
+          "decision_score": 0.6179567812651172,
+          "selected_weight": 0.0,
+          "rank": 4,
+          "min_weight": 0.06755419153790708,
+          "max_weight": 0.11680599231852719,
+          "preferred_weight": 0.09218009192821713,
+          "materiality": "support",
+          "reason": "Asset 10 is accepted because mu=0.1075, sigma=0.1372, liquidity=0.6493, and cost=0.0118 combine into score=0.6180; its final weight is near zero."
+        },
+        {
+          "name": "Asset 6",
+          "mu": 0.1013,
+          "sigma": 0.0792,
+          "liquidity": 0.6067,
+          "cost": 0.0193,
+          "mu_norm": 0.43026004728132394,
+          "risk_norm": 0.0,
+          "liquidity_norm": 0.3307249712313004,
+          "cost_norm": 0.672,
+          "decision_score": 0.5143141988337864,
+          "selected_weight": 0.0,
+          "rank": 5,
+          "min_weight": 0.05762177738823786,
+          "max_weight": 0.11119201910349676,
+          "preferred_weight": 0.0844068982458673,
+          "materiality": "support",
+          "reason": "Asset 6 is accepted because mu=0.1013, sigma=0.0792, liquidity=0.6067, and cost=0.0193 combine into score=0.5143; its final weight is near zero."
+        },
+        {
+          "name": "Asset 9",
+          "mu": 0.1382,
+          "sigma": 0.178,
+          "liquidity": 0.6124,
+          "cost": 0.0234,
+          "mu_norm": 0.8664302600472813,
+          "risk_norm": 0.6630872483221477,
+          "liquidity_norm": 0.34384349827387817,
+          "cost_norm": 1.0,
+          "decision_score": 0.39599922912020225,
+          "selected_weight": 0.19662079958481396,
+          "rank": 6,
+          "min_weight": 0.046283259457352725,
+          "max_weight": 0.10478329157734428,
+          "preferred_weight": 0.07553327551734851,
+          "materiality": "satellite",
+          "reason": "Asset 9 is down-weighted because mu=0.1382, sigma=0.1780, liquidity=0.6124, and cost=0.0234 combine into score=0.3960; it is a material allocation."
+        },
+        {
+          "name": "Asset 1",
+          "mu": 0.1121,
+          "sigma": 0.2282,
+          "liquidity": 0.6543,
+          "cost": 0.0109,
+          "mu_norm": 0.5579196217494091,
+          "risk_norm": 1.0,
+          "liquidity_norm": 0.44027617951668585,
+          "cost_norm": 0.0,
+          "decision_score": 0.3501987182082049,
+          "selected_weight": 0.0,
+          "rank": 7,
+          "min_weight": 0.041894043828286306,
+          "max_weight": 0.1023024305696111,
+          "preferred_weight": 0.0720982371989487,
+          "materiality": "satellite",
+          "reason": "Asset 1 is down-weighted because mu=0.1121, sigma=0.2282, liquidity=0.6543, and cost=0.0109 combine into score=0.3502; its final weight is near zero."
+        },
+        {
+          "name": "Asset 12",
+          "mu": 0.1139,
+          "sigma": 0.182,
+          "liquidity": 0.467,
+          "cost": 0.0113,
+          "mu_norm": 0.5791962174940899,
+          "risk_norm": 0.6899328859060404,
+          "liquidity_norm": 0.009205983889528202,
+          "cost_norm": 0.031999999999999945,
+          "decision_score": 0.34043013590017573,
+          "selected_weight": 0.0,
+          "rank": 8,
+          "min_weight": 0.04095788802376684,
+          "max_weight": 0.10177329902792617,
+          "preferred_weight": 0.07136559352584651,
+          "materiality": "satellite",
+          "reason": "Asset 12 is down-weighted because mu=0.1139, sigma=0.1820, liquidity=0.4670, and cost=0.0113 combine into score=0.3404; its final weight is near zero."
+        },
+        {
+          "name": "Asset 2",
+          "mu": 0.141,
+          "sigma": 0.2167,
+          "liquidity": 0.463,
+          "cost": 0.018,
+          "mu_norm": 0.8995271867612292,
+          "risk_norm": 0.922818791946309,
+          "liquidity_norm": 0.0,
+          "cost_norm": 0.5679999999999998,
+          "decision_score": 0.28155330652828975,
+          "selected_weight": 0.0,
+          "rank": 9,
+          "min_weight": 0.035315525208961106,
+          "max_weight": 0.09858413743694902,
+          "preferred_weight": 0.06694983132295507,
+          "materiality": "satellite",
+          "reason": "Asset 2 is down-weighted because mu=0.1410, sigma=0.2167, liquidity=0.4630, and cost=0.0180 combine into score=0.2816; its final weight is near zero."
+        },
+        {
+          "name": "Asset 5",
+          "mu": 0.098,
+          "sigma": 0.2159,
+          "liquidity": 0.8401,
+          "cost": 0.0225,
+          "mu_norm": 0.3912529550827424,
+          "risk_norm": 0.9174496644295304,
+          "liquidity_norm": 0.8678941311852704,
+          "cost_norm": 0.9279999999999999,
+          "decision_score": 0.10832932637172013,
+          "selected_weight": 0.0,
+          "rank": 10,
+          "min_weight": 0.018714893777289847,
+          "max_weight": 0.08920117184513485,
+          "preferred_weight": 0.05395803281121234,
+          "materiality": "satellite",
+          "reason": "Asset 5 is down-weighted because mu=0.0980, sigma=0.2159, liquidity=0.8401, and cost=0.0225 combine into score=0.1083; its final weight is near zero."
+        },
+        {
+          "name": "Asset 8",
+          "mu": 0.0746,
+          "sigma": 0.1349,
+          "liquidity": 0.638,
+          "cost": 0.0191,
+          "mu_norm": 0.11465721040189127,
+          "risk_norm": 0.3738255033557047,
+          "liquidity_norm": 0.4027617951668585,
+          "cost_norm": 0.6559999999999999,
+          "decision_score": 0.07336660054551773,
+          "selected_weight": 0.0,
+          "rank": 11,
+          "min_weight": 0.01536429921894545,
+          "max_weight": 0.08730735752954888,
+          "preferred_weight": 0.05133582837424717,
+          "materiality": "satellite",
+          "reason": "Asset 8 is down-weighted because mu=0.0746, sigma=0.1349, liquidity=0.6380, and cost=0.0191 combine into score=0.0734; its final weight is near zero."
+        },
+        {
+          "name": "Asset 11",
+          "mu": 0.0649,
+          "sigma": 0.175,
+          "liquidity": 0.8272,
+          "cost": 0.0197,
+          "mu_norm": 0.0,
+          "risk_norm": 0.6429530201342282,
+          "liquidity_norm": 0.8382048331415421,
+          "cost_norm": 0.7039999999999998,
+          "decision_score": 0.0,
+          "selected_weight": 0.2009469679718914,
+          "rank": 12,
+          "min_weight": 0.008333333333333338,
+          "max_weight": 0.08333333333333334,
+          "preferred_weight": 0.04583333333333334,
+          "materiality": "satellite",
+          "reason": "Asset 11 is down-weighted because mu=0.0649, sigma=0.1750, liquidity=0.8272, and cost=0.0197 combine into score=0.0000; it is a material allocation."
+        }
+      ],
+      "decision_formula": "score_i = 0.42 * mu_norm_i + 0.28 * (1 - sigma_norm_i) + 0.22 * liquidity_norm_i - 0.18 * cost_norm_i",
+      "ranking_rule": "Rank assets by descending decision_score; wider allocation bands are assigned to higher-ranked assets.",
+      "accepted_count": 4,
+      "rejected_count": 8,
+      "accepted_assets": [
+        "Asset 3",
+        "Asset 4",
+        "Asset 9",
+        "Asset 11"
+      ],
+      "rejected_assets": [
+        "Asset 7",
+        "Asset 10",
+        "Asset 6",
+        "Asset 1",
+        "Asset 12",
+        "Asset 2",
+        "Asset 5",
+        "Asset 8"
+      ],
+      "minimum_features": [
+        "mu",
+        "sigma",
+        "liquidity",
+        "cost"
+      ]
+    },
+    "candidate_summary": "Accepted 1 of 12 candidates using feasibility, diversification, and objective ranking.",
+    "minimum_characteristics": {
+      "mu_min": 0.0649,
+      "sigma_min": 0.07921742997159278,
+      "liquidity_min": 0.463,
+      "cost_min": 0.0109
+    },
+    "decision_variable_ranges": {
+      "asset_count": 12,
+      "active_assets_target": 4,
+      "ranges": {
+        "mu": [
+          0.0649,
+          0.1495
+        ],
+        "sigma": [
+          0.07921742997159278,
+          0.2282060499107867
+        ],
+        "liquidity": [
+          0.463,
+          0.8975
+        ],
+        "cost": [
+          0.0109,
+          0.0234
+        ],
+        "weight_interval": [
+          0.1,
+          0.4625
+        ]
+      },
+      "records": [
+        {
+          "name": "Asset 3",
+          "mu": 0.1377,
+          "sigma": 0.15650882151855267,
+          "liquidity": 0.8954,
+          "cost": 0.0152,
+          "mu_norm": 0.8605200945626477,
+          "risk_norm": 0.5187737934515031,
+          "liquidity_norm": 0.9951668584579977,
+          "cost_norm": 0.344,
+          "decision_score": 0.7236970032055227,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 7",
+          "mu": 0.1495,
+          "sigma": 0.12561099160604727,
+          "liquidity": 0.6352,
+          "cost": 0.0168,
+          "mu_norm": 1.0,
+          "risk_norm": 0.31138996826327336,
+          "liquidity_norm": 0.3963176064441887,
+          "cost_norm": 0.4719999999999999,
+          "decision_score": 0.6660014079583926,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 4",
+          "mu": 0.1083,
+          "sigma": 0.08181687607911992,
+          "liquidity": 0.8975,
+          "cost": 0.0184,
+          "mu_norm": 0.5130023640661938,
+          "risk_norm": 0.017447279588119095,
+          "liquidity_norm": 1.0,
+          "cost_norm": 0.6,
+          "decision_score": 0.6130117261154732,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 10",
+          "mu": 0.1075,
+          "sigma": 0.1372100623589951,
+          "liquidity": 0.6493,
+          "cost": 0.0118,
+          "mu_norm": 0.5035460992907802,
+          "risk_norm": 0.3892420267472147,
+          "liquidity_norm": 0.4287686996547756,
+          "cost_norm": 0.07199999999999998,
+          "decision_score": 0.470316819209641,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 9",
+          "mu": 0.1382,
+          "sigma": 0.1780077560496883,
+          "liquidity": 0.6124,
+          "cost": 0.0234,
+          "mu_norm": 0.8664302600472813,
+          "risk_norm": 0.6630729656964028,
+          "liquidity_norm": 0.34384349827387817,
+          "cost_norm": 1.0,
+          "decision_score": 0.4365614114528297,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 6",
+          "mu": 0.1013,
+          "sigma": 0.07921742997159278,
+          "liquidity": 0.6067,
+          "cost": 0.0193,
+          "mu_norm": 0.43026004728132394,
+          "risk_norm": 0.0,
+          "liquidity_norm": 0.3307249712313004,
+          "cost_norm": 0.672,
+          "decision_score": 0.3970112664484871,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 1",
+          "mu": 0.1121,
+          "sigma": 0.2282060499107867,
+          "liquidity": 0.6543,
+          "cost": 0.0109,
+          "mu_norm": 0.5579196217494091,
+          "risk_norm": 1.0,
+          "liquidity_norm": 0.44027617951668585,
+          "cost_norm": 0.0,
+          "decision_score": 0.389028855753876,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 2",
+          "mu": 0.141,
+          "sigma": 0.21670637096166057,
+          "liquidity": 0.463,
+          "cost": 0.018,
+          "mu_norm": 0.8995271867612292,
+          "risk_norm": 0.9228150515534714,
+          "liquidity_norm": 0.0,
+          "cost_norm": 0.5679999999999998,
+          "decision_score": 0.38000058306992035,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 12",
+          "mu": 0.1139,
+          "sigma": 0.18200758559463764,
+          "liquidity": 0.467,
+          "cost": 0.0113,
+          "mu_norm": 0.5791962174940899,
+          "risk_norm": 0.6899195097249452,
+          "liquidity_norm": 0.009205983889528202,
+          "cost_norm": 0.031999999999999945,
+          "decision_score": 0.349115702774438,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 5",
+          "mu": 0.098,
+          "sigma": 0.21590639456796604,
+          "liquidity": 0.8401,
+          "cost": 0.0225,
+          "mu_norm": 0.3912529550827424,
+          "risk_norm": 0.9174456723752428,
+          "liquidity_norm": 0.8678941311852704,
+          "cost_norm": 0.9279999999999999,
+          "decision_score": 0.28991087586264025,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 8",
+          "mu": 0.0746,
+          "sigma": 0.1349102339057225,
+          "liquidity": 0.638,
+          "cost": 0.0191,
+          "mu_norm": 0.11465721040189127,
+          "risk_norm": 0.3738057574924808,
+          "liquidity_norm": 0.4027617951668585,
+          "cost_norm": 0.6559999999999999,
+          "decision_score": 0.18485790249416412,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        },
+        {
+          "name": "Asset 11",
+          "mu": 0.0649,
+          "sigma": 0.17500788900429445,
+          "liquidity": 0.8272,
+          "cost": 0.0197,
+          "mu_norm": 0.0,
+          "risk_norm": 0.6429380919951888,
+          "liquidity_norm": 0.8382048331415421,
+          "cost_norm": 0.7039999999999998,
+          "decision_score": 0.17536358988634781,
+          "weight_lower_bound": 0.1,
+          "weight_upper_bound": 0.4625
+        }
+      ],
+      "summary": "Decision variables are derived from normalized mu, sigma, liquidity, and cost. The solver should concentrate mass on roughly 4 assets, with individual weights typically in [0.100, 0.463] before projection."
+    },
+    "rejection_reasons": [
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4.",
+      "Rejected because it uses 1 active positions while the target is 4."
+    ],
+    "latest_event": null,
+    "step_insights": [
+      "HYBRID is solving the constrained objective with return, covariance risk, transaction cost, and liquidity terms.",
+      "Current backend stage: completed. The optimizer respects simplex feasibility and the active-asset target of 4.",
+      "Current feasible portfolio return is 11.47% with risk 1.28%.",
+      "Covariance is symmetrized and diagonally regularized before optimization to improve numerical stability and produce more reliable portfolio weights."
+    ]
+  }
+}

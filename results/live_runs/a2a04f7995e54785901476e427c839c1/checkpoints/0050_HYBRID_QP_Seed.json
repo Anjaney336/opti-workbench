@@ -1,0 +1,441 @@
+{
+  "event": {
+    "timestamp": "2026-03-30T11:31:46.585599+00:00",
+    "event": "update",
+    "message": "HYBRID backend stage: HYBRID:QP Seed",
+    "stage": "HYBRID:QP Seed",
+    "progress": 0.71
+  },
+  "status": "running",
+  "stage": "HYBRID:QP Seed",
+  "progress": 0.71,
+  "latest_payload": {
+    "selected_model": "HYBRID",
+    "current_model": "HYBRID",
+    "message": "HYBRID backend stage: HYBRID:QP Seed",
+    "assets": [
+      {
+        "name": "Asset 1",
+        "mu": 0.1121,
+        "sigma": 0.2282,
+        "liquidity": 0.6543,
+        "cost": 0.0109,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 2",
+        "mu": 0.141,
+        "sigma": 0.2167,
+        "liquidity": 0.463,
+        "cost": 0.018,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 3",
+        "mu": 0.1377,
+        "sigma": 0.1565,
+        "liquidity": 0.8954,
+        "cost": 0.0152,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 4",
+        "mu": 0.1083,
+        "sigma": 0.0818,
+        "liquidity": 0.8975,
+        "cost": 0.0184,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 5",
+        "mu": 0.098,
+        "sigma": 0.2159,
+        "liquidity": 0.8401,
+        "cost": 0.0225,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 6",
+        "mu": 0.1013,
+        "sigma": 0.0792,
+        "liquidity": 0.6067,
+        "cost": 0.0193,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 7",
+        "mu": 0.1495,
+        "sigma": 0.1256,
+        "liquidity": 0.6352,
+        "cost": 0.0168,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 8",
+        "mu": 0.0746,
+        "sigma": 0.1349,
+        "liquidity": 0.638,
+        "cost": 0.0191,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 9",
+        "mu": 0.1382,
+        "sigma": 0.178,
+        "liquidity": 0.6124,
+        "cost": 0.0234,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 10",
+        "mu": 0.1075,
+        "sigma": 0.1372,
+        "liquidity": 0.6493,
+        "cost": 0.0118,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 11",
+        "mu": 0.0649,
+        "sigma": 0.175,
+        "liquidity": 0.8272,
+        "cost": 0.0197,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 12",
+        "mu": 0.1139,
+        "sigma": 0.182,
+        "liquidity": 0.467,
+        "cost": 0.0113,
+        "sector": "Residential"
+      }
+    ],
+    "model_outputs": {
+      "QP": {
+        "weights": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2902436355407119,
+          0.2864692806408735,
+          0.29662974953922117,
+          0.12665733427919348
+        ],
+        "expected_return": 0.10458465922011588,
+        "risk": 0.016275885218637733,
+        "sharpe": 6.425743227800267,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.30624547405763497,
+        "budget_used": 5.0,
+        "average_liquidity": 0.6682708102524783,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). QP behaves as smooth and deterministic search.",
+          "solver_steps": [
+            "Compute a convex quadratic objective.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "QP assigns the largest weight to Asset 11 because it offers an attractive return-to-risk profile. Its expected return is 0.0649 and its standalone variance contribution is 0.0306. The asset also has liquidity 0.8272, which supports implementability. Its transaction cost is 0.0197, which affects how aggressively the optimizer can size it. QP concentrates mass where the convex trade-off is most efficient.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 4: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 5: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight 29.02%; mu=0.1382; covariance exposure=0.0184; liquidity=0.6124; cost=0.0234; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 10: weight 28.65%; mu=0.1075; covariance exposure=0.0117; liquidity=0.6493; cost=0.0118; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 11: weight 29.66%; mu=0.0649; covariance exposure=0.0185; liquidity=0.8272; cost=0.0197; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 12: weight 12.67%; mu=0.1139; covariance exposure=0.0166; liquidity=0.4670; cost=0.0113; chosen because it materially contributes to portfolio return and/or diversification."
+          ]
+        }
+      },
+      "PSO": {
+        "weights": [
+          0.0,
+          0.0,
+          0.362546395956759,
+          0.34072802873261604,
+          0.14075094259107418,
+          0.0,
+          0.15597463271955075,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "expected_return": 0.12393528420048615,
+        "risk": 0.010905032385703494,
+        "sharpe": 11.364962506939952,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.40477785452825915,
+        "budget_used": 5.0,
+        "average_liquidity": 0.847747402301425,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). PSO behaves as stochastic and exploratory search.",
+          "solver_steps": [
+            "Initialize a swarm of candidate portfolios.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "PSO assigns the largest weight to Asset 3 because it offers an attractive return-to-risk profile. Its expected return is 0.1377 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. PSO allows exploratory sampling, so nearby alternatives can retain weight if they improve the swarm objective.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight 36.25%; mu=0.1377; covariance exposure=0.0144; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 4: weight 34.07%; mu=0.1083; covariance exposure=0.0052; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 5: weight 14.08%; mu=0.0980; covariance exposure=0.0188; liquidity=0.8401; cost=0.0225; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight 15.60%; mu=0.1495; covariance exposure=0.0080; liquidity=0.6352; cost=0.0168; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 10: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 11: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 12: weight is near zero because it is less competitive on return, risk, liquidity, or cost."
+          ]
+        }
+      },
+      "GA": {
+        "weights": [
+          0.0,
+          0.0,
+          0.4002976699419585,
+          0.35603681674937987,
+          0.1158935695022888,
+          0.0,
+          0.12777194380637277,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "expected_return": 0.12413925181524256,
+        "risk": 0.010795832129635969,
+        "sharpe": 11.49881271999998,
+        "diversification": 4,
+        "active_assets_target": 4,
+        "objective_value": -0.4177745541461806,
+        "budget_used": 5.0,
+        "average_liquidity": 0.8564925031432788,
+        "valid": true,
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x). GA behaves as mutation-driven and irregular search.",
+          "solver_steps": [
+            "Initialize a population of portfolios and evolve it.",
+            "Form the covariance matrix Sigma and return vector mu.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "GA assigns the largest weight to Asset 3 because it offers an attractive return-to-risk profile. Its expected return is 0.1377 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. GA is mutation-driven, so sparse and irregular allocations can persist if they survive selection pressure.",
+          "asset_justifications": [
+            "Asset 1: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 2: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 3: weight 40.03%; mu=0.1377; covariance exposure=0.0146; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 4: weight 35.60%; mu=0.1083; covariance exposure=0.0051; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 5: weight 11.59%; mu=0.0980; covariance exposure=0.0183; liquidity=0.8401; cost=0.0225; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 6: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 7: weight 12.78%; mu=0.1495; covariance exposure=0.0077; liquidity=0.6352; cost=0.0168; chosen because it materially contributes to portfolio return and/or diversification.",
+            "Asset 8: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 9: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 10: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 11: weight is near zero because it is less competitive on return, risk, liquidity, or cost.",
+            "Asset 12: weight is near zero because it is less competitive on return, risk, liquidity, or cost."
+          ]
+        }
+      }
+    },
+    "current_output": null,
+    "comparison_table": [
+      {
+        "model": "QP",
+        "expected_return": 0.10458465922011588,
+        "risk": 0.016275885218637733,
+        "sharpe": 6.425743227800267,
+        "diversification": 4
+      },
+      {
+        "model": "PSO",
+        "expected_return": 0.12393528420048615,
+        "risk": 0.010905032385703494,
+        "sharpe": 11.364962506939952,
+        "diversification": 4
+      },
+      {
+        "model": "GA",
+        "expected_return": 0.12413925181524256,
+        "risk": 0.010795832129635969,
+        "sharpe": 11.49881271999998,
+        "diversification": 4
+      }
+    ],
+    "stage_rows": [
+      {
+        "name": "Universe",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.0,
+        "detail": "12 assets ready"
+      },
+      {
+        "name": "QP",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.37128690000099596,
+        "detail": "QP completed"
+      },
+      {
+        "name": "PSO",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 1.8772597999995924,
+        "detail": "PSO completed"
+      },
+      {
+        "name": "GA",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 2.540713300000789,
+        "detail": "GA completed"
+      },
+      {
+        "name": "HYBRID",
+        "status": "running",
+        "progress": 0.5,
+        "duration_sec": 0.0,
+        "detail": "HYBRID:QP Seed"
+      },
+      {
+        "name": "Packaging",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      }
+    ],
+    "current_trace": [
+      {
+        "iteration": 0.0,
+        "risk": 0.016422342365427126,
+        "objective_value": -0.3048684533498255,
+        "expected_return": 0.10546546541244253,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 1.0,
+        "risk": 0.01630839622237528,
+        "objective_value": -0.30624126401356344,
+        "expected_return": 0.10460286102782063,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 2.0,
+        "risk": 0.01629336684188433,
+        "objective_value": -0.30624480730490933,
+        "expected_return": 0.10461286745729444,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 3.0,
+        "risk": 0.016282025671835704,
+        "objective_value": -0.3062453730078277,
+        "expected_return": 0.10459764881061039,
+        "stage": "HYBRID:QP Seed"
+      },
+      {
+        "iteration": 4.0,
+        "risk": 0.016275966705491293,
+        "objective_value": -0.30624547343714364,
+        "expected_return": 0.1045855796422049,
+        "stage": "HYBRID:QP Seed"
+      }
+    ],
+    "current_trace_payload": {
+      "plot_type": "scatter3d",
+      "model": "HYBRID",
+      "title": "HYBRID Live Trace",
+      "color_by": "expected_return",
+      "points": [
+        {
+          "iteration": 0.0,
+          "risk": 0.016422342365427126,
+          "objective_value": -0.3048684533498255,
+          "expected_return": 0.10546546541244253,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 1.0,
+          "risk": 0.01630839622237528,
+          "objective_value": -0.30624126401356344,
+          "expected_return": 0.10460286102782063,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 2.0,
+          "risk": 0.01629336684188433,
+          "objective_value": -0.30624480730490933,
+          "expected_return": 0.10461286745729444,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 3.0,
+          "risk": 0.016282025671835704,
+          "objective_value": -0.3062453730078277,
+          "expected_return": 0.10459764881061039,
+          "stage": "HYBRID:QP Seed"
+        },
+        {
+          "iteration": 4.0,
+          "risk": 0.016275966705491293,
+          "objective_value": -0.30624547343714364,
+          "expected_return": 0.1045855796422049,
+          "stage": "HYBRID:QP Seed"
+        }
+      ]
+    },
+    "current_surface": null,
+    "decision_analysis": null,
+    "candidate_summary": null,
+    "minimum_characteristics": null,
+    "decision_variable_ranges": null,
+    "rejection_reasons": null,
+    "latest_event": {
+      "event_type": "trace_point",
+      "stage": "HYBRID:QP Seed",
+      "model": "HYBRID",
+      "timestamp": "2026-03-30T11:31:46.585599Z",
+      "iteration": 4.0,
+      "expected_return": 0.1045855796422049,
+      "risk": 0.016275966705491293,
+      "objective_value": -0.30624547343714364,
+      "active_count": 12
+    },
+    "step_insights": [
+      "HYBRID is solving the constrained objective with return, covariance risk, transaction cost, and liquidity terms.",
+      "Current backend stage: HYBRID:QP Seed. The optimizer respects simplex feasibility and the active-asset target of 4.",
+      "Latest iteration 4 moved the objective to -0.30625.",
+      "Covariance is symmetrized and diagonally regularized before optimization to improve numerical stability and produce more reliable portfolio weights."
+    ]
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "event": {
+    "timestamp": "2026-04-01T19:43:01.231234+00:00",
+    "event": "update",
+    "message": "GA backend stage: GA",
+    "stage": "GA",
+    "progress": 0.512
+  },
+  "status": "running",
+  "stage": "GA",
+  "progress": 0.512,
+  "latest_payload": {
+    "selected_model": "HYBRID",
+    "current_model": "GA",
+    "message": "GA backend stage: GA",
+    "assets": [
+      {
+        "name": "Asset 1",
+        "mu": 0.1121,
+        "sigma": 0.2282,
+        "liquidity": 0.6543,
+        "cost": 0.0109,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 2",
+        "mu": 0.141,
+        "sigma": 0.2167,
+        "liquidity": 0.463,
+        "cost": 0.018,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 3",
+        "mu": 0.1377,
+        "sigma": 0.1565,
+        "liquidity": 0.8954,
+        "cost": 0.0152,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 4",
+        "mu": 0.1083,
+        "sigma": 0.0818,
+        "liquidity": 0.8975,
+        "cost": 0.0184,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 5",
+        "mu": 0.098,
+        "sigma": 0.2159,
+        "liquidity": 0.8401,
+        "cost": 0.0225,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 6",
+        "mu": 0.1013,
+        "sigma": 0.0792,
+        "liquidity": 0.6067,
+        "cost": 0.0193,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 7",
+        "mu": 0.1495,
+        "sigma": 0.1256,
+        "liquidity": 0.6352,
+        "cost": 0.0168,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 8",
+        "mu": 0.0746,
+        "sigma": 0.1349,
+        "liquidity": 0.638,
+        "cost": 0.0191,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 9",
+        "mu": 0.1382,
+        "sigma": 0.178,
+        "liquidity": 0.6124,
+        "cost": 0.0234,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 10",
+        "mu": 0.1075,
+        "sigma": 0.1372,
+        "liquidity": 0.6493,
+        "cost": 0.0118,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 11",
+        "mu": 0.0649,
+        "sigma": 0.175,
+        "liquidity": 0.8272,
+        "cost": 0.0197,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 12",
+        "mu": 0.1139,
+        "sigma": 0.182,
+        "liquidity": 0.467,
+        "cost": 0.0113,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 13",
+        "mu": 0.1078,
+        "sigma": 0.1591,
+        "liquidity": 0.7899,
+        "cost": 0.0198,
+        "sector": "Residential"
+      },
+      {
+        "name": "Asset 14",
+        "mu": 0.1152,
+        "sigma": 0.1226,
+        "liquidity": 0.5021,
+        "cost": 0.0162,
+        "sector": "Residential"
+      }
+    ],
+    "model_outputs": {
+      "QP": {
+        "weights": [
+          0.07751408004382664,
+          0.0,
+          0.1777271335792932,
+          0.20703010594034402,
+          0.07552546690228265,
+          0.04676730806962927,
+          0.07175236054056418,
+          0.07354072988963098,
+          0.0,
+          0.0440216541381787,
+          0.10918455265200568,
+          0.0,
+          0.11693660815220765,
+          0.0
+        ],
+        "expected_return": 0.10270658623512456,
+        "risk": 0.008179088973019472,
+        "sharpe": 1.1356534592072127,
+        "diversification": 10,
+        "active_assets_target": 10,
+        "objective_value": -0.3563149192563557,
+        "budget_used": 0.01755344554869266,
+        "average_liquidity": 0.7912515624615236,
+        "valid": true,
+        "objective_breakdown": {
+          "risk_term": 0.008179088973019472,
+          "return_term": -0.10270658623512456,
+          "cost_term": 0.004212826931686239,
+          "liquidity_term": -0.2769380468615332,
+          "tail_risk_term": 0.032764943018512675,
+          "diversification_term": 0.00020969180827775055,
+          "concentration_term": 0.022758856511179662,
+          "regime_term": 0.0009437599073902088,
+          "tracking_term": 0.0066011424376023154,
+          "entropy_term": -0.05234059574736626,
+          "model_adjustment": 0.0
+        },
+        "regime_metrics": {
+          "regime_names": [
+            "Bear",
+            "Neutral",
+            "Bull"
+          ],
+          "regime_probabilities": [
+            0.25,
+            0.45,
+            0.3
+          ],
+          "regime_expected_returns": [
+            0.08832766416220712,
+            0.10270658623512456,
+            0.11913964003274448
+          ],
+          "regime_risks": [
+            0.01136715201135937,
+            0.00916705807367691,
+            0.00806701110483568
+          ],
+          "loss_var_95": 0.027701614043732982,
+          "loss_cvar_95": 0.07281098448558372,
+          "tracking_error": 0.05500952031335263,
+          "regime_dispersion": 0.00013091920648672286,
+          "regime_stress": 0.009387067467445156,
+          "hybrid_stage_weights": {}
+        },
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma_hat x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x) + 0.450 CVaR_0.950(x) + 0.300 D_gap(x) + 0.180 HHI(x) + 0.280 Omega_regime(x) + 0.120 T(x), with Sigma_hat using shrinkage phi=0.000. QP behaves as smooth and deterministic search.",
+          "solver_steps": [
+            "Compute a local deterministic minimum of the advanced portfolio objective.",
+            "Form the return vector mu, covariance matrix Sigma, and shrinkage-adjusted covariance Sigma_hat.",
+            "Assemble liquidity, transaction-cost, CVaR-scenario, and regime-conditioned tensors.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "QP assigns the largest weight to Asset 4 because it offers a strong trade-off across return, covariance risk, and tail-risk control. Its expected return is 0.0675 and its standalone variance contribution is 0.0067. The asset also has liquidity 0.8975, which supports implementability. Its transaction cost is 0.0184, which affects how aggressively the optimizer can size it. QP concentrates mass where the deterministic curvature of the advanced objective is most efficient.",
+          "asset_justifications": [
+            "Asset 1: weight 7.75%; mu=0.1461; covariance exposure=0.0147; liquidity=0.6543; cost=0.0109; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 2: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 3: weight 17.77%; mu=0.1120; covariance exposure=0.0111; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 4: weight 20.70%; mu=0.0675; covariance exposure=0.0036; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 5: weight 7.55%; mu=0.1302; covariance exposure=0.0151; liquidity=0.8401; cost=0.0225; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 6: weight 4.68%; mu=0.0782; covariance exposure=0.0043; liquidity=0.6067; cost=0.0193; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 7: weight 7.18%; mu=0.1122; covariance exposure=0.0092; liquidity=0.6352; cost=0.0168; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 8: weight 7.35%; mu=0.0905; covariance exposure=0.0067; liquidity=0.6380; cost=0.0191; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 9: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 10: weight 4.40%; mu=0.1037; covariance exposure=0.0080; liquidity=0.6493; cost=0.0118; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 11: weight 10.92%; mu=0.1105; covariance exposure=0.0118; liquidity=0.8272; cost=0.0197; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 12: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 13: weight 11.69%; mu=0.1084; covariance exposure=0.0100; liquidity=0.7899; cost=0.0198; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 14: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution."
+          ]
+        }
+      },
+      "PSO": {
+        "weights": [
+          0.07920998800152823,
+          0.0,
+          0.20034173023193505,
+          0.1609703620720064,
+          0.07539111014930801,
+          0.05505186885341953,
+          0.04398473492518166,
+          0.06517409172659061,
+          0.0,
+          0.0,
+          0.1621621361392128,
+          0.0,
+          0.15771397790333316,
+          7.112855678029607e-12
+        ],
+        "expected_return": 0.1048408254065376,
+        "risk": 0.009262947566862486,
+        "sharpe": 1.0893208809445214,
+        "diversification": 9,
+        "active_assets_target": 10,
+        "objective_value": -0.3499764313423259,
+        "budget_used": 0.017930338421362064,
+        "average_liquidity": 0.8006589851383149,
+        "valid": true,
+        "objective_breakdown": {
+          "risk_term": 0.009262947566862486,
+          "return_term": -0.1048408254065376,
+          "cost_term": 0.004303281221126895,
+          "liquidity_term": -0.2802306447984102,
+          "tail_risk_term": 0.036836845621124,
+          "diversification_term": 0.00044212824722059097,
+          "concentration_term": 0.024910126677552578,
+          "regime_term": 0.001059800652424423,
+          "tracking_term": 0.00803532254677476,
+          "entropy_term": -0.04975541367046386,
+          "model_adjustment": 0.0
+        },
+        "regime_metrics": {
+          "regime_names": [
+            "Bear",
+            "Neutral",
+            "Bull"
+          ],
+          "regime_probabilities": [
+            0.25,
+            0.45,
+            0.3
+          ],
+          "regime_expected_returns": [
+            0.09016310984962235,
+            0.10484082540653761,
+            0.12161535747158361
+          ],
+          "regime_risks": [
+            0.012788646774630737,
+            0.010313424818250592,
+            0.009075813840060521
+          ],
+          "loss_var_95": 0.03389396989628591,
+          "loss_cvar_95": 0.08185965693583111,
+          "tracking_error": 0.066961021223123,
+          "regime_dispersion": 0.00013641673111724985,
+          "regime_stress": 0.010560947013888607,
+          "hybrid_stage_weights": {}
+        },
+        "explanation": {
+          "objective_function": "Minimize x^T Sigma_hat x - 1.000 mu^T x + 0.150 C(x) - 0.350 L(x) + 0.450 CVaR_0.950(x) + 0.300 D_gap(x) + 0.180 HHI(x) + 0.280 Omega_regime(x) + 0.120 T(x), with Sigma_hat using shrinkage phi=0.000. PSO behaves as stochastic and exploratory search.",
+          "solver_steps": [
+            "Initialize a swarm of candidate portfolios and update velocity-position dynamics.",
+            "Form the return vector mu, covariance matrix Sigma, and shrinkage-adjusted covariance Sigma_hat.",
+            "Assemble liquidity, transaction-cost, CVaR-scenario, and regime-conditioned tensors.",
+            "Set the objective and enforce nonnegative weights that sum to 1.",
+            "Solve the model-specific optimization problem.",
+            "Project the solution back to the feasible simplex if needed.",
+            "Validate the allocation and compute summary metrics."
+          ],
+          "why_this_allocation": "PSO assigns the largest weight to Asset 3 because it offers a strong trade-off across return, covariance risk, and tail-risk control. Its expected return is 0.1120 and its standalone variance contribution is 0.0245. The asset also has liquidity 0.8954, which supports implementability. Its transaction cost is 0.0152, which affects how aggressively the optimizer can size it. PSO allows exploratory sampling, so nearby alternatives can retain weight if they improve the multi-term swarm objective.",
+          "asset_justifications": [
+            "Asset 1: weight 7.92%; mu=0.1461; covariance exposure=0.0154; liquidity=0.6543; cost=0.0109; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 2: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 3: weight 20.03%; mu=0.1120; covariance exposure=0.0122; liquidity=0.8954; cost=0.0152; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 4: weight 16.10%; mu=0.0675; covariance exposure=0.0035; liquidity=0.8975; cost=0.0184; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 5: weight 7.54%; mu=0.1302; covariance exposure=0.0158; liquidity=0.8401; cost=0.0225; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 6: weight 5.51%; mu=0.0782; covariance exposure=0.0044; liquidity=0.6067; cost=0.0193; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 7: weight 4.40%; mu=0.1122; covariance exposure=0.0097; liquidity=0.6352; cost=0.0168; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 8: weight 6.52%; mu=0.0905; covariance exposure=0.0068; liquidity=0.6380; cost=0.0191; kept as a satellite position for balance, regime resilience, or feasibility.",
+            "Asset 9: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 10: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 11: weight 16.22%; mu=0.1105; covariance exposure=0.0133; liquidity=0.8272; cost=0.0197; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 12: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution.",
+            "Asset 13: weight 15.77%; mu=0.1084; covariance exposure=0.0103; liquidity=0.7899; cost=0.0198; chosen because it materially contributes to return and/or stabilizes the diversified objective.",
+            "Asset 14: weight is near zero because it is dominated on return, covariance, liquidity, cost, or tail-risk contribution."
+          ]
+        }
+      }
+    },
+    "current_output": null,
+    "parameters": {
+      "lambda": 1.0,
+      "alpha": 0.35,
+      "budget": 5.0,
+      "gamma": 0.15,
+      "delta": 0.35,
+      "theta": 0.45,
+      "kappa": 0.3,
+      "psi": 0.18,
+      "rho": 0.28,
+      "omega": 0.12,
+      "phi": 0.15,
+      "alpha_cvar": 0.95,
+      "return_prior_strength": 0.55,
+      "bl_tau": 0.08,
+      "bl_view_confidence": 0.65
+    },
+    "comparison_table": [
+      {
+        "model": "QP",
+        "expected_return": 0.10270658623512456,
+        "risk": 0.008179088973019472,
+        "sharpe": 1.1356534592072127,
+        "diversification": 10
+      },
+      {
+        "model": "PSO",
+        "expected_return": 0.1048408254065376,
+        "risk": 0.009262947566862486,
+        "sharpe": 1.0893208809445214,
+        "diversification": 9
+      }
+    ],
+    "stage_rows": [
+      {
+        "name": "Universe",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 0.0,
+        "detail": "14 assets ready"
+      },
+      {
+        "name": "QP",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 6.172122199990554,
+        "detail": "QP completed"
+      },
+      {
+        "name": "PSO",
+        "status": "completed",
+        "progress": 1.0,
+        "duration_sec": 15.26008449998335,
+        "detail": "PSO completed"
+      },
+      {
+        "name": "GA",
+        "status": "running",
+        "progress": 0.4,
+        "duration_sec": 0.0,
+        "detail": "GA"
+      },
+      {
+        "name": "HYBRID",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      },
+      {
+        "name": "Packaging",
+        "status": "pending",
+        "progress": 0.0,
+        "duration_sec": 0.0,
+        "detail": "Waiting"
+      }
+    ],
+    "current_trace": [
+      {
+        "iteration": 0.0,
+        "risk": 0.009005088536241768,
+        "objective_value": -0.34349262942990827,
+        "expected_return": 0.10577804283340762,
+        "stage": "GA"
+      },
+      {
+        "iteration": 4.0,
+        "risk": 0.008493834166388494,
+        "objective_value": -0.35376786183021314,
+        "expected_return": 0.10357556025704481,
+        "stage": "GA"
+      },
+      {
+        "iteration": 9.0,
+        "risk": 0.00855730934088901,
+        "objective_value": -0.35471313169926116,
+        "expected_return": 0.10390662552472124,
+        "stage": "GA"
+      },
+      {
+        "iteration": 14.0,
+        "risk": 0.008846786113591186,
+        "objective_value": -0.35501570221007767,
+        "expected_return": 0.10470763146830471,
+        "stage": "GA"
+      },
+      {
+        "iteration": 19.0,
+        "risk": 0.008769120072745348,
+        "objective_value": -0.3551704641178874,
+        "expected_return": 0.10449862490086831,
+        "stage": "GA"
+      }
+    ],
+    "current_trace_payload": {
+      "plot_type": "scatter3d",
+      "model": "GA",
+      "title": "GA Live Trace",
+      "color_by": "expected_return",
+      "points": [
+        {
+          "iteration": 0.0,
+          "risk": 0.009005088536241768,
+          "objective_value": -0.34349262942990827,
+          "expected_return": 0.10577804283340762,
+          "stage": "GA"
+        },
+        {
+          "iteration": 4.0,
+          "risk": 0.008493834166388494,
+          "objective_value": -0.35376786183021314,
+          "expected_return": 0.10357556025704481,
+          "stage": "GA"
+        },
+        {
+          "iteration": 9.0,
+          "risk": 0.00855730934088901,
+          "objective_value": -0.35471313169926116,
+          "expected_return": 0.10390662552472124,
+          "stage": "GA"
+        },
+        {
+          "iteration": 14.0,
+          "risk": 0.008846786113591186,
+          "objective_value": -0.35501570221007767,
+          "expected_return": 0.10470763146830471,
+          "stage": "GA"
+        },
+        {
+          "iteration": 19.0,
+          "risk": 0.008769120072745348,
+          "objective_value": -0.3551704641178874,
+          "expected_return": 0.10449862490086831,
+          "stage": "GA"
+        }
+      ]
+    },
+    "current_surface": null,
+    "decision_analysis": null,
+    "candidate_summary": null,
+    "minimum_characteristics": null,
+    "decision_variable_ranges": null,
+    "rejection_reasons": null,
+    "latest_event": {
+      "event_type": "trace_point",
+      "stage": "GA",
+      "model": "GA",
+      "timestamp": "2026-04-01T19:43:01.231234Z",
+      "iteration": 19.0,
+      "expected_return": 0.10449862490086831,
+      "risk": 0.008769120072745348,
+      "objective_value": -0.3551704641178874,
+      "active_count": 10
+    },
+    "step_insights": [
+      "GA is solving the unified multi-term objective with covariance risk, return reward, liquidity reward, tail risk, regime stress, and diversification control.",
+      "Current backend stage: GA. The optimizer respects budget, box, simplex, and active-asset feasibility with target 10.",
+      "Latest iteration 19 moved the objective to -0.35517.",
+      "Covariance is symmetrized, shrinkage-adjusted, and diagonally regularized before optimization to improve numerical stability and produce more reliable portfolio weights."
+    ]
+  }
+}

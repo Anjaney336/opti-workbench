@@ -1,0 +1,110 @@
+{
+  "event": {
+    "timestamp": "2026-03-30T11:47:35.131641+00:00",
+    "event": "update",
+    "message": "Preparing live optimization workflow",
+    "stage": "initializing",
+    "progress": 0.01
+  },
+  "status": "running",
+  "stage": "initializing",
+  "progress": 0.01,
+  "latest_payload": {
+    "asset_count": 12,
+    "active_assets_target": 4,
+    "budget": 5.0,
+    "lambda_value": 1.0,
+    "liquidity_weight": 0.35,
+    "cost_sensitivity": 0.15,
+    "method": "AUTO",
+    "dataset": "balanced",
+    "seed": 42,
+    "monte_carlo_paths": 300,
+    "assets": [
+      {
+        "name": "Asset 1",
+        "mu": 0.1121,
+        "sigma": 0.2282,
+        "liquidity": 0.6543,
+        "cost": 0.0109
+      },
+      {
+        "name": "Asset 2",
+        "mu": 0.141,
+        "sigma": 0.2167,
+        "liquidity": 0.463,
+        "cost": 0.018
+      },
+      {
+        "name": "Asset 3",
+        "mu": 0.1377,
+        "sigma": 0.1565,
+        "liquidity": 0.8954,
+        "cost": 0.0152
+      },
+      {
+        "name": "Asset 4",
+        "mu": 0.1083,
+        "sigma": 0.0818,
+        "liquidity": 0.8975,
+        "cost": 0.0184
+      },
+      {
+        "name": "Asset 5",
+        "mu": 0.098,
+        "sigma": 0.2159,
+        "liquidity": 0.8401,
+        "cost": 0.0225
+      },
+      {
+        "name": "Asset 6",
+        "mu": 0.1013,
+        "sigma": 0.0792,
+        "liquidity": 0.6067,
+        "cost": 0.0193
+      },
+      {
+        "name": "Asset 7",
+        "mu": 0.1495,
+        "sigma": 0.1256,
+        "liquidity": 0.6352,
+        "cost": 0.0168
+      },
+      {
+        "name": "Asset 8",
+        "mu": 0.0746,
+        "sigma": 0.1349,
+        "liquidity": 0.638,
+        "cost": 0.0191
+      },
+      {
+        "name": "Asset 9",
+        "mu": 0.1382,
+        "sigma": 0.178,
+        "liquidity": 0.6124,
+        "cost": 0.0234
+      },
+      {
+        "name": "Asset 10",
+        "mu": 0.1075,
+        "sigma": 0.1372,
+        "liquidity": 0.6493,
+        "cost": 0.0118
+      },
+      {
+        "name": "Asset 11",
+        "mu": 0.0649,
+        "sigma": 0.175,
+        "liquidity": 0.8272,
+        "cost": 0.0197
+      },
+      {
+        "name": "Asset 12",
+        "mu": 0.1139,
+        "sigma": 0.182,
+        "liquidity": 0.467,
+        "cost": 0.0113
+      }
+    ]
+  }
+}
