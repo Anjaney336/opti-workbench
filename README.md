@@ -1,5 +1,9 @@
 # Hybrid Portfolio Optimization System
 
+## Research positioning
+
+OPTI is evaluated as a rigorously benchmarked matheuristic framework for constrained real-estate portfolio optimization. It does not claim that QP, PSO, GA, or their hybrid is universally superior. The research question is when QP-derived structure helps population-based search as the problem moves from convex allocation to realistic non-convex constraints. See [SCIENTIFIC_AUDIT.md](SCIENTIFIC_AUDIT.md), [SECOND_STAGE_NOVELTY_AUDIT.md](SECOND_STAGE_NOVELTY_AUDIT.md), and the verified evidence files under `literature/`.
+
 Research-grade implementation of a hybrid optimization system for real estate portfolio allocation combining Quadratic Programming (QP), Particle Swarm Optimization (PSO), and Genetic Algorithms (GA).
 
 ## Overview

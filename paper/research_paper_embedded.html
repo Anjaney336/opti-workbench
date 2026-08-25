@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Current Hybrid Portfolio Optimization Engine</title>
+<style>
+  :root { color-scheme: light; --ink:#172126; --muted:#5a6870; --rule:#d9e1e5; --paper:#ffffff; --bg:#f3f6f7; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.62; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 28px 72px; background: var(--paper); box-shadow: 0 20px 60px rgba(16, 26, 31, 0.10); }
+  h1 { margin: 0 0 18px; font-size: 2.2rem; line-height: 1.16; }
+  h2 { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 1.35rem; }
+  p { margin: 12px 0; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 0.93em; background: #eef3f4; padding: 0.08em 0.28em; border-radius: 3px; }
+  .meta { color: var(--muted); }
+  .panel { margin: 20px 0; padding: 16px 18px; border: 1px solid var(--rule); background: #f8fbfb; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.95rem; }
+  th, td { border: 1px solid var(--rule); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #eef4f5; }
+  ul { margin: 10px 0 10px 22px; }
+  li { margin: 6px 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>Current Hybrid Portfolio Optimization Engine</h1>
+<p class="meta">Updated August 3, 2026</p>
+
+<div class="panel">
+  <p>This HTML companion now reflects the current optimizer implementation in the repository rather than the older synthetic-study manuscript.</p>
+  <p>The authoritative manuscript text is in <code>paper/research_paper_embedded.md</code> and <code>paper/research_paper_draft.md</code>.</p>
+</div>
+
+<h2>Current Engine Scope</h2>
+<p>The live system combines a Black-Litterman return engine, covariance conditioning, regime-aware scenario construction, exact empirical-CVaR QP seeding, warm-started PSO refinement, warm-started GA refinement, and an adaptive hybrid selector. The objective is multi-term and includes covariance risk, return reward, liquidity reward, transaction cost, empirical CVaR, diversification-gap control, concentration penalty, regime stress, tracking penalty, and an entropy-style diversification bonus.</p>
+
+<h2>Latest Live Run</h2>
+<p>The manuscript is anchored to the successful live run from <strong>July 12, 2026</strong> under job id <code>d3858571df2749b8ada6c26629a872e0</code>. The workflow selected <code>HYBRID</code>, but the best stage-specific candidate inside that workflow came from the GA stage. That distinction is important and is stated directly in the updated manuscript.</p>
+
+<table>
+  <tr>
+    <th>Method</th>
+    <th>Expected Return</th>
+    <th>Risk</th>
+    <th>Sharpe</th>
+    <th>Objective</th>
+    <th>Loss CVaR 95</th>
+  </tr>
+  <tr>
+    <td>QP</td>
+    <td>0.086893</td>
+    <td>0.006079</td>
+    <td>1.114507</td>
+    <td>-0.237571</td>
+    <td>0.084487</td>
+  </tr>
+  <tr>
+    <td>PSO</td>
+    <td>0.088314</td>
+    <td>0.006645</td>
+    <td>1.083387</td>
+    <td>-0.237928</td>
+    <td>0.090019</td>
+  </tr>
+  <tr>
+    <td>GA</td>
+    <td>0.088015</td>
+    <td>0.006530</td>
+    <td>1.089150</td>
+    <td><strong>-0.237977</strong></td>
+    <td>0.088368</td>
+  </tr>
+  <tr>
+    <td>HYBRID</td>
+    <td>0.088070</td>
+    <td>0.006552</td>
+    <td>1.088004</td>
+    <td>-0.237932</td>
+    <td>0.088442</td>
+  </tr>
+</table>
+
+<h2>Published Hybrid Allocation</h2>
+<ul>
+  <li>Asset 3: <code>22.16%</code></li>
+  <li>Asset 4: <code>31.86%</code></li>
+  <li>Asset 6: <code>24.41%</code></li>
+  <li>Asset 11: <code>21.56%</code></li>
+</ul>
+
+<h2>What Changed From the Old Paper</h2>
+<ul>
+  <li>The paper no longer describes the optimizer as a plain mean-variance toy study.</li>
+  <li>The return engine is now documented as Black-Litterman with Bayesian-smoothed views.</li>
+  <li>The QP stage is now described correctly as an exact empirical-CVaR seed with optional discrete subset screening.</li>
+  <li>The hybrid stage is now described correctly as a selector over <code>QP</code>, <code>PSO</code>, <code>GA</code>, and <code>BLEND</code>, not just a fixed averaged blend.</li>
+  <li>The conclusions were rewritten to avoid unsupported claims of universal optimizer superiority.</li>
+</ul>
+</main>
+</body>
+</html>
