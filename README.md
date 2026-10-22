@@ -1,372 +1,110 @@
-# Hybrid Portfolio Optimization System
-
-## Research positioning
-
-OPTI is evaluated as a rigorously benchmarked matheuristic framework for constrained real-estate portfolio optimization. It does not claim that QP, PSO, GA, or their hybrid is universally superior. The research question is when QP-derived structure helps population-based search as the problem moves from convex allocation to realistic non-convex constraints. See [SCIENTIFIC_AUDIT.md](SCIENTIFIC_AUDIT.md), [SECOND_STAGE_NOVELTY_AUDIT.md](SECOND_STAGE_NOVELTY_AUDIT.md), and the verified evidence files under `literature/`.
-
-Research-grade implementation of a hybrid optimization system for real estate portfolio allocation combining Quadratic Programming (QP), Particle Swarm Optimization (PSO), and Genetic Algorithms (GA).
+# Opti-Workbench: constrained portfolio optimisation research
+Documentation audited on 22 October 2026 against public repository tree/commit `82c9bc7505dc4b01df3c4566b3a6d84589c536ba`.
+Source: https://github.com/Anjaney336/opti-workbench/tree/82c9bc7505dc4b01df3c4566b3a6d84589c536ba
 
 ## Overview
+This repository contains a synthetic-data portfolio-optimisation application and older research modules. The current CLI invokes `optimizer.PortfolioOptimizer`. It compares QP-labelled, particle-swarm (PSO), genetic-algorithm (GA) and hybrid workflows with feasibility, risk and allocation diagnostics.
 
-This system provides:
+The implemented engine includes empirical-CVaR convex seeding, subset enumeration, regime-aware inputs, covariance conditioning and heuristic refinement. It is **not a verified FHFA 100-metro exact-MILP benchmark**. No empirical claim of superior returns, runtime or global optimality of the final hybrid is made here.
 
-1. **Data Generation** - Correlated stochastic asset models with positive semi-definite covariance matrices
-2. **Convex Baseline** - CVXPY-based Quadratic Programming solver for risk-adjusted portfolio optimization
-3. **Custom Metaheuristics** - Implementations of PSO and GA from scratch (no black-box libraries)
-4. **Hybrid Pipeline** - Sequential optimization: QP → PSO (warm start) → GA (warm start)
-5. **Monte Carlo Evaluation** - Unbiased performance assessment via stochastic simulation
-6. **Constraint Handling** - Robust projection for budget, allocation, and normalization constraints
-7. **Convergence Analysis** - Detailed tracking of optimization progress
+## Entry points and structure
+- `main.py`: `python main.py --demo`; without the flag it prints usage.
+- `optimizer/engine.py`: request configuration, method execution and dashboard bundle.
+- `optimizer/asset_engine.py`: seeded synthetic asset universes and covariance generation; also accepts supplied assets.
+- `optimizer/returns_engine.py`: expected-return machinery.
+- `optimizer/solvers.py`: common full objective and QP-labelled/PSO/GA/hybrid workflows.
+- `optimizer/advanced.py`: empirical-CVaR convex seed, subset search, rolling and receding-horizon helpers.
+- `src/`: legacy mean-variance optimisation, stochastic evaluation and utility modules.
+- `backend/api.py`, `frontend/app.py`: API and Streamlit entry points.
+- `test_quick.py`: executable smoke/integration checks.
+- `paper/real_estate_research_pipeline.py`: separate HouseTS research pipeline; requires an external `HouseTS.csv`. Its dependencies and data provenance are not fully supplied by the main requirements file.
+- `results/`: stored outputs. These are not a substitute for a fresh, versioned reproduction.
 
-## Mathematical Framework
+## Methodology
+### Full scoring objective
+The engine minimises a weighted combination of covariance risk, negative expected return, cost, negative liquidity, empirical tail risk, diversification-gap penalty, concentration, regime risk, tracking and an entropy bonus. Exact terms are in `optimizer/solvers.py::objective_components`. Preserve those weights when comparing algorithms.
 
-### Optimization Problem
+### Convex seed
+`optimizer/advanced.py::solve_exact_cvar_seed` introduces a threshold eta and nonnegative auxiliary losses u, with:
+`CVaR_alpha = eta + sum(u) / (T * (1 - alpha))`,
+`u >= loss - eta`, and `loss = -R @ weights`.
 
-**Maximize:**
-$$x^T \mu - \lambda x^T \Sigma x$$
+It solves a convex surrogate using CVXPY, attempting OSQP, CLARABEL and SCS. The surrogate contains additional risk and concentration terms. Do not describe it as a pure linear CVaR programme or assume every solver can handle every expression. The implementation accepts both optimal and optimal_inaccurate statuses, which must be logged distinctly.
 
-**Subject to:**
-- $c^T x \leq B$ (budget constraint)
-- $0 \leq x_i \leq \alpha$ (box constraints)
-- $\sum_i x_i = 1$ (normalization)
+The surrogate differs from the full heuristic score: in particular the full score includes an entropy term and a different diversification-gap construction. A successful seed solve does not certify a global optimum for the final score.
 
-Where:
-- $x$: portfolio allocation vector
-- $\mu$: expected returns
-- $\Sigma$: covariance matrix (guaranteed PSD via $\Sigma = AA^T$)
-- $c$: asset costs
-- $B$: budget limit
-- $\alpha$: maximum per-asset allocation
-- $\lambda$: risk aversion parameter
+### Discrete selection and heuristics
+`solve_exact_discrete_seed` enumerates fixed-size subsets. When the count exceeds its threshold, it first narrows the candidate universe using a score. This is not a mixed-integer solver. An optimum on a screened shortlist is not a certificate for the full universe; fixed-size enumeration also needs care when interpreting an “at most K” constraint.
 
-### Methods
+PSO and GA search repaired feasible allocations and may warm-start from other methods. Hybrid candidate selection or blending is engineering logic, not proof of universal superiority. Verify feasibility after all projection/repair steps.
 
-1. **Quadratic Programming (QP)**
-   - Solver: CVXPY (ECOS/SCS backend)
-   - Provides convex baseline solution
-   - Guaranteed globally optimal for QP formulation
+## Data and assumptions
+| Input | Provenance / URL | Access date / status |
+|---|---|---|
+| Demo assets and scenarios | Code-generated synthetic inputs: `optimizer/asset_engine.py`, `optimizer/engine.py`; repository URL above | Code inspected 2026-10-22; not observed market data |
+| Legacy synthetic dataset | `src/data.py`; `data/metadata.json` records generation settings | Code inspected 2026-10-22; code hash and seed needed for each run |
+| HouseTS panel | External `HouseTS.csv` expected by research script | Publisher, URL, licence, access date and hash not yet verified; not supplied or verified |
+| FHFA metro data | No corresponding public-code/data pipeline identified in this audited snapshot | Not used in verified demo; do not claim FHFA benchmark results |
 
-2. **Particle Swarm Optimization (PSO)**
-   - 30 particles, 150 iterations
-   - Inertia weight decay: 0.9 → 0.4
-   - Cognitive/social components: $c_1 = c_2 = 1.5$
-   - Warm start from QP solution
-   - Constraint projection after each update
+All generated returns, costs, liquidity, regimes and model parameters are assumptions. Simulated histories and Monte Carlo paths are not realised property returns. Housing indices, if later added, are not directly investable securities. Never include employer data or publish a dataset without appropriate rights.
 
-3. **Genetic Algorithm (GA)**
-   - Population: 50, generations: 150
-   - Tournament selection (size 3)
-   - Blend crossover (BLX-α) with α=0.5
-   - Gaussian mutation: σ=0.05
-   - Elitism: top 15% preserved
-   - Warm start from PSO solution
-
-## Project Structure
-
+## Reproduce the supported demo
+From a clean checkout of the audited commit:
+```text
+python -m venv .venv
+# Activate the environment using the command appropriate to your operating system.
+python -m pip install -r requirements.txt
+python main.py --demo
 ```
-opti/
-├── main.py                 # Main execution script
-├── requirements.txt        # Dependencies
-├── data/                   # Generated portfolio data (CSV, NPY)
-├── results/                # Optimization results & plots
-└── src/
-    ├── __init__.py
-    ├── data.py             # Data generation & I/O
-    ├── utils.py            # Constraint projection, utilities
-    ├── qp.py               # Quadratic programming solver
-    ├── evaluation.py       # Monte Carlo evaluation
-    ├── pso.py              # PSO implementation
-    ├── ga.py               # GA implementation
-    └── hybrid.py           # Hybrid pipeline coordinator
+The checked-in demo requests 12 synthetic assets, target 4 active assets, seed 42 and 500 Monte Carlo paths. These are configuration values, not performance results.
+
+Smoke checks:
+```text
+python -m pip install httpx
+python test_quick.py
+```
+The smoke script imports FastAPI TestClient; its httpx dependency is not declared in the current requirements file. Add it to a development requirements file and lock versions after a clean test. Do not report these commands as freshly passed: this audit inspected code and did not execute the optimiser.
+
+To run the UI:
+```text
+uvicorn backend.api:app --reload
+streamlit run frontend/app.py
 ```
 
-## Installation
+## Benchmarks to record
+Predeclare a common objective, feasible set, asset/scenario seeds, evaluation budget and machine configuration. Report cold and warm starts separately and include seed-generation time. Record each failure, timeout and feasibility residual. Compare convex seed and full objective separately.
+
+| Metric | Result | Computation / evidence |
+|---|---|---|
+| Feasible-run proportion | Not yet measured in a verified reproduction | valid completed runs / all attempted runs; archive run ledger |
+| Median runtime | Not yet measured in a verified reproduction | median wall-clock time including declared stages, on named hardware |
+| Full-objective difference | Not yet measured in a verified reproduction | candidate score minus reference score, same objective and constraints |
+| Certified optimum gap | Not established for full heuristic objective | Only report where a valid bound/certificate exists for exactly the same problem |
+| Empirical loss CVaR | Not yet measured in a verified reproduction | common frozen scenario sample and alpha; compare definitions before aggregation |
+| Out-of-sample outcome | Not yet measured in a verified reproduction | time-ordered held-out series with costs; synthetic runs labelled synthetic |
+| Seed dispersion | Not yet measured in a verified reproduction | distribution across predeclared independent seeds; no selected best-seed reporting |
+| Tests | Not yet measured in a verified reproduction | actual executed checks, command, environment and log |
+
+## Limitations
+- No verified MILP implementation or FHFA 100-metro evidence was found in the inspected Python sources.
+- Seed and full scoring functions differ. The full score's quantile-tail average can differ from the auxiliary-variable CVaR for finite samples/ties.
+- Shortlist subset search does not establish full-universe global optimality.
+- Synthetic returns are governed by modelling assumptions; they cannot validate investment alpha.
+- HouseTS acquisition/licensing, extra dependencies and reproduction need separate documentation.
+- Current requirements use lower bounds, not a tested lockfile; results may vary by environment and solver.
+- Stored plots, manuscript prose and successful-looking application outputs are not independent verification.
+
+## Reproducibility checklist
+- [ ] Record exact commit and clean working-tree status.
+- [ ] Pin Python, dependencies and installed CVXPY solvers; supply tested requirements-lock.txt.
+- [ ] Declare all seeds and model weights; save a machine-readable run config.
+- [ ] Document every dataset's publisher, URL, observation period, access date, licence and SHA-256.
+- [ ] Demonstrate `python main.py --demo` from a clean environment.
+- [ ] Run `python test_quick.py`; save output and add focused numerical tests.
+- [ ] Test auxiliary-variable CVaR against an independent finite-sample calculation.
+- [ ] Test feasibility after projection, zero/degenerate covariance and failed solver statuses.
+- [ ] Distinguish enumeration from shortlist search and label surrogate/full objectives.
+- [ ] Archive all benchmark attempts and failed runs with fixed budgets.
+- [ ] Reconcile resume, README, portfolio and manuscript claims before submission.
 
-### 1. Create Virtual Environment (Recommended)
 
-```bash
-cd c:\Users\hp\Documents\opti
-python -m venv venv
-venv\Scripts\activate
-```
-
-### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-**Required packages:**
-- `numpy` - Numerical computations
-- `scipy` - Scientific algorithms
-- `cvxpy` - Convex optimization
-- `matplotlib` - Plotting
-- `pandas` - Data I/O
-
-## Execution
-
-### Quick Start
-
-```bash
-cd c:\Users\hp\Documents\opti
-python main.py
-```
-
-This runs the complete pipeline:
-1. Generates 40 correlated assets
-2. Solves QP optimization
-3. Refines with PSO (warm start from QP)
-4. Further refines with GA (warm start from PSO)
-5. Evaluates all solutions via Monte Carlo (2000 scenarios)
-6. Generates convergence plots
-
-### Configuration
-
-Edit `main.py` to customize:
-
-```python
-result, data, mc_results = run_complete_pipeline(
-    n_assets=40,              # Number of portfolio assets
-    lambda_param=2.0,         # Risk aversion parameter
-    n_mc_scenarios=2000,      # Monte Carlo samples
-    generate_plots=True,      # Create plots
-    verbose=True              # Detailed output
-)
-```
-
-### Custom Usage
-
-#### Generate Portfolio Data Only
-
-```python
-from src.data import generate_portfolio_data, save_portfolio_data
-
-data = generate_portfolio_data(n_assets=50, seed=42)
-save_portfolio_data(data, output_dir='data')
-```
-
-#### Solve QP Only
-
-```python
-from src.qp import solve_quadratic_program
-from src.data import generate_portfolio_data
-
-data = generate_portfolio_data(n_assets=40, seed=42)
-result = solve_quadratic_program(
-    mu=data['mu'],
-    Sigma=data['Sigma'],
-    c=data['c'],
-    B=data['B'],
-    alpha=data['alpha'],
-    lambda_param=2.0
-)
-print(f"Optimal allocation: {result['x']}")
-```
-
-#### Run PSO Only
-
-```python
-from src.pso import optimize_with_pso
-from src.utils import project_constraints
-
-def objective(x):
-    return np.dot(x, mu) - 2.0 * (x @ Sigma @ x)
-
-def constraint_proj(x):
-    return project_constraints(x, c, B, alpha)
-
-result = optimize_with_pso(
-    objective_fn=objective,
-    constraint_proj_fn=constraint_proj,
-    x0=x_initial,
-    n_particles=30,
-    n_iterations=150
-)
-```
-
-#### Run GA Only
-
-```python
-from src.ga import optimize_with_ga
-
-result = optimize_with_ga(
-    objective_fn=objective,
-    constraint_proj_fn=constraint_proj,
-    x0=x_initial,
-    population_size=50,
-    n_generations=150
-)
-```
-
-#### Complete Hybrid Pipeline
-
-```python
-from src.hybrid import hybrid_optimize
-
-result = hybrid_optimize(
-    mu=data['mu'],
-    Sigma=data['Sigma'],
-    c=data['c'],
-    B=data['B'],
-    alpha=data['alpha'],
-    lambda_param=2.0,
-    verbose=True
-)
-
-# Access results
-x_qp = result['x_qp']          # QP solution
-x_pso = result['x_pso']        # PSO solution
-x_ga = result['x_ga']          # GA solution
-x_final = result['x_final']    # Best overall
-print(f"Best method: {result['best_method']}")
-```
-
-#### Monte Carlo Evaluation
-
-```python
-from src.evaluation import monte_carlo_evaluate, compare_portfolios
-
-# Evaluate single portfolio
-stats = monte_carlo_evaluate(x, mu, Sigma, n_scenarios=2000)
-print(f"Mean return: {stats['mean_return']:.6f}")
-print(f"Sharpe ratio: {stats['sharpe_ratio']:.4f}")
-print(f"VaR (95%): {stats['var_95']:.6f}")
-
-# Compare multiple allocations
-allocations = {'QP': x_qp, 'PSO': x_pso, 'GA': x_ga}
-comparison = compare_portfolios(allocations, mu, Sigma, n_scenarios=2000)
-```
-
-## Output
-
-### Console Output Example
-
-```
-================================================================================
-             RESEARCH-GRADE HYBRID PORTFOLIO OPTIMIZATION
-================================================================================
-
-[STAGE 0] DATA GENERATION
-────────────────────────────────────────────────────────────────────────────────
-
-✓ Portfolio Data Generated:
-  Assets: 40
-  Expected return range: [0.0512, 0.1497]
-  Budget constraint: 40.0000
-  Max allocation: 0.3000
-
-✓ Covariance Matrix Properties:
-  Min eigenvalue: 1.24e-08 (PSD: ✓)
-  Max eigenvalue: 3.187643
-  Condition number: 2.57e+08
-  Trace: 0.800000
-
-[STAGE 1] QUADRATIC PROGRAMMING (Baseline)
-────────────────────────────────────────────────────────────────────────────────
-...
-```
-
-### Generated Artifacts
-
-**Data Files** (`data/`):
-- `asset_parameters.csv` - Expected returns and costs
-- `covariance_matrix.npy` - PSD covariance matrix
-- `metadata.json` - Portfolio configuration
-
-**Results** (`results/`):
-- `convergence.png` - PSO and GA convergence curves
-- `allocations.png` - Allocation comparison chart
-
-## Key Features
-
-### Numerical Stability
-- PSD covariance via Cholesky decomposition
-- Eigenvalue clipping to prevent rank deficiency
-- Iterative constraint projection
-- Velocity clipping in PSO for stability
-
-### Constraint Handling
-- Budget constraint: $c^T x \leq B$
-- Box constraints: $0 \leq x_i \leq \alpha$
-- Normalization: $\sum x = 1$
-- Robust projection with feasibility verification
-
-### Vectorization
-- All core computations use NumPy broadcasting
-- Efficient matrix operations (Σ x, x^T Σ x)
-- Batch Monte Carlo evaluation
-
-### Reproducibility
-- Fixed random seeds for all components
-- Deterministic algorithm flow
-- Detailed logging and history tracking
-
-## Performance
-
-**Typical Runtime:**
-- Data generation: < 1s
-- QP solving: < 2s
-- PSO (30 particles, 150 iter): 5-10s
-- GA (50 pop, 150 gen): 10-15s
-- MC evaluation (2000 scenarios): 2-3s
-- **Total: ~25-30s for full pipeline**
-
-**Problem Sizes Tested:**
-- Assets: 20-100
-- Budget constraint satisfaction: ✓ (verified)
-- Allocation normalization: ✓ (≤1e-8 error)
-
-## Mathematical Verification
-
-### Covariance Matrix
-```python
-# Guaranteed PSD by construction
-A = random matrix
-Σ = A A^T  ✓ Always PSD
-
-# Eigenvalue properties verified
-evals = np.linalg.eigvals(Sigma)
-assert all(evals >= -1e-9)  # All non-negative
-```
-
-### Feasibility
-```python
-# All solutions verified for constraint satisfaction
-assert abs(sum(x) - 1.0) < 1e-6
-assert all(x >= -1e-6)
-assert all(x <= alpha + 1e-6)
-assert c @ x <= B + 1e-6
-```
-
-### Convergence
-```python
-# PSO and GA show monotonic improvement (with high probability)
-# Convergence plots saved to results/convergence.png
-```
-
-## References
-
-1. **Markowitz, H.** (1952). "Portfolio Selection". Journal of Finance.
-2. **Kennedy, J. & Eberhart, R.** (1995). "Particle Swarm Optimization". ICNN.
-3. **Goldberg, D.E.** (1989). "Genetic Algorithms in Search, Optimization, and Machine Learning".
-4. **Boyd, S. & Vandenberghe, L.** (2004). "Convex Optimization". Cambridge University Press.
-
-## License
-
-MIT License
-
-## Notes
-
-- This implementation prioritizes **mathematical correctness** and **reproducibility** over computational speed
-- Suitable for research, academic validation, and production deployment
-- Can be extended with additional constraints or alternative objective functions
-- PSO and GA implementations are fully custom—no reliance on scikit-optimize, DEAP, or similar libraries
-
-## Support
-
-For issues or questions:
-1. Verify dependencies: `pip install -r requirements.txt`
-2. Check random seeds for reproducibility
-3. Review console output for constraint violations
-4. Inspect convergence plots for optimizer behavior
-5. Validate covariance matrix properties via eigenvalue analysis
