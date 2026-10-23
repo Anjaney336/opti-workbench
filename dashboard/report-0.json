@@ -1,0 +1,37 @@
+{
+  "max_matched_objective_gap": 9.728051628132839e-10,
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "folds_per_seed": 4,
+  "heldout_periods_per_seed": 80,
+  "returns": {
+    "41": {
+      "LP": 0.1823984044124074,
+      "CVXPY": 0.1823984077700036,
+      "EQUAL": 0.12323378397051066
+    },
+    "42": {
+      "LP": -0.07379368750044835,
+      "CVXPY": -0.07379368178902179,
+      "EQUAL": -0.10070384064695559
+    },
+    "43": {
+      "LP": 0.15315047168197382,
+      "CVXPY": 0.15315046804547428,
+      "EQUAL": 0.13276718530025788
+    }
+  },
+  "source": "Seeded synthetic correlated returns",
+  "source_url": "https://github.com/Anjaney336/opti-workbench/blob/main/matched_benchmark.py",
+  "access_date": "2026-10-24",
+  "assumptions": {
+    "alpha": 0.95,
+    "cap": 0.3,
+    "turnover_cost": 0.001,
+    "initial_and_terminal_costs": true
+  },
+  "limitations": "All methods use the same 10-asset long-only feasible set; equal weight is not a CVaR optimizer. No cardinality or MILP. Synthetic data are not calibrated. Solver agreement is numerical verification, not evidence of investment superiority."
+}

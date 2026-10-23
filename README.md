@@ -1,3 +1,13 @@
+# Matched CVaR benchmark — October 2026
+
+[Open dashboard](https://anjaney336.github.io/portfolio/research/opti-workbench/)
+
+Added `matched_benchmark.py`: SciPy LP and CVXPY solve the same 95% empirical CVaR objective, long-only weights summing to one, maximum weight 30%. Three synthetic seeds each use four 60/20 train/test folds, including initial deployment, drift, 10bp turnover costs and terminal liquidation. Maximum objective gap across 12 windows: 9.73e-10. Six tests validate hand-calculated CVaR, feasibility, solver agreement and reproducibility. This is continuous LP, not MILP; synthetic results do not establish market alpha.
+
+Reproduce: `pip install -r requirements-matched.txt`, `python test_matched_benchmark.py`, `python matched_benchmark.py`. CSVs and full assumptions are in `results/matched/`. Source is the seeded generator in `matched_benchmark.py`, generated/accessed 2026-10-24. Dashboard and heuristic research below remain separate and retain their limitations.
+
+---
+
 # Opti-Workbench: constrained portfolio optimisation research
 Documentation audited on 22 October 2026 against public repository tree/commit `82c9bc7505dc4b01df3c4566b3a6d84589c536ba`.
 Source: https://github.com/Anjaney336/opti-workbench/tree/82c9bc7505dc4b01df3c4566b3a6d84589c536ba
@@ -128,5 +138,6 @@ These are one small synthetic experiment, not statistical evidence of superiorit
 ![Train-only allocation evidence](results/audit/walk_forward.svg)
 
 Reproduce with Python 3.12: `pip install -r requirements-research.txt`, `python test_research_harness.py`, then `python research_harness.py`. Full per-period rows and measured solve times are in `results/audit/`. Named data source: [public generator](https://github.com/Anjaney336/opti-workbench/blob/main/research_harness.py), generated/accessed 24 October 2026. AI-assisted implementation. No raw employer data.
+
 
 
