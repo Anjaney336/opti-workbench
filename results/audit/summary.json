@@ -1,0 +1,43 @@
+{
+  "data": "Synthetic correlated 10-asset return panel, not FHFA or market history",
+  "source_url": "https://github.com/Anjaney336/opti-workbench/blob/main/research_harness.py",
+  "access_date": "2026-10-24",
+  "seed": 20261024,
+  "train": 12,
+  "test": 6,
+  "folds": 4,
+  "fee_per_traded_notional": 0.001,
+  "report": {
+    "QP": {
+      "periods": 24,
+      "net_cumulative_return": -0.0866066404516247,
+      "turnover": 1.5059475811782437,
+      "solve_seconds": 0.7102439999871422
+    },
+    "PSO": {
+      "periods": 24,
+      "net_cumulative_return": 0.032884409542973,
+      "turnover": 1.551452710745054,
+      "solve_seconds": 21.820610700000543
+    },
+    "GA": {
+      "periods": 24,
+      "net_cumulative_return": 0.03306347494077144,
+      "turnover": 1.5453631555398704,
+      "solve_seconds": 24.60577049999847
+    },
+    "HYBRID": {
+      "periods": 24,
+      "net_cumulative_return": 0.032705586993961866,
+      "turnover": 1.5466736613505943,
+      "solve_seconds": 36.76900640001986
+    },
+    "EQUAL": {
+      "periods": 24,
+      "net_cumulative_return": 0.02822276500171572,
+      "turnover": 0.10989016586176399,
+      "solve_seconds": 1.5599987818859518e-05
+    }
+  },
+  "limits": "Small uncalibrated synthetic experiment. Dashboard fixed-risk calibration disabled; covariance estimated on the training window. CVaR exact-seed and discrete search disabled for this benchmark; QP uses its surrogate. Equal-weight uses ten assets, whereas optimized portfolios target three; not matched constraints. Solver objectives differ. No statistical superiority or exact-MILP claim. Costs exclude initial deployment and final liquidation; benchmark rebalances at same fold boundaries."
+}

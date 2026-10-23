@@ -108,3 +108,25 @@ Predeclare a common objective, feasible set, asset/scenario seeds, evaluation bu
 - [ ] Reconcile resume, README, portfolio and manuscript claims before submission.
 
 
+
+## Reproduced train-only evaluation — 24 October 2026
+
+A new standalone `research_harness.py` evaluates QP-labelled, PSO, GA and hybrid methods over four rolling folds (12 training / 6 test periods), with drifted holdings and 10 bp per traded notional. The 10-asset panel is generated from seed 20261024; it is synthetic, not FHFA or live market history.
+
+The harness disables the dashboard's fixed-risk calibration and estimates covariance only on each training window. Exact CVaR seeding and discrete search are disabled for this benchmark; this does not validate every dashboard configuration. Equal-weight uses all ten assets and is not constraint-matched to the optimized three-asset target.
+
+| Method | Net cumulative synthetic return, 24 periods |
+|---|---:|
+| QP surrogate | −8.661% |
+| PSO | 3.288% |
+| GA | 3.306% |
+| Hybrid | 3.271% |
+| Equal weight | 2.822% |
+
+These are one small synthetic experiment, not statistical evidence of superiority. The objectives and search budgets differ. Initial deployment and final liquidation costs are excluded. Four accounting tests verify drift, turnover costs and cost direction.
+
+![Train-only allocation evidence](results/audit/walk_forward.svg)
+
+Reproduce with Python 3.12: `pip install -r requirements-research.txt`, `python test_research_harness.py`, then `python research_harness.py`. Full per-period rows and measured solve times are in `results/audit/`. Named data source: [public generator](https://github.com/Anjaney336/opti-workbench/blob/main/research_harness.py), generated/accessed 24 October 2026. AI-assisted implementation. No raw employer data.
+
+
